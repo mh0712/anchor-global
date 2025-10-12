@@ -9,9 +9,7 @@ import {
   Fuel, 
   ShoppingCart, 
   Users, 
-  Shield,
-  Package,
-  Wrench
+  Shield
 } from "lucide-react";
 
 export function ServicesSection() {

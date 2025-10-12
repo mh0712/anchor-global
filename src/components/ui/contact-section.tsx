@@ -131,7 +131,7 @@ export function ContactSection() {
                   Send Us a Message
                 </CardTitle>
                 <CardDescription className="text-lg text-slate-600">
-                  Fill out the form below and we'll get back to you within 24 hours.
+                  Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
               <CardContent className="px-8 pb-8 pt-0">
