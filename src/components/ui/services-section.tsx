@@ -56,22 +56,22 @@ export function ServicesSection() {
     { 
       name: "Tankers", 
       description: "Oil, chemical, and LNG tankers",
-      image: "/src4.jpg"
+      image: "/tanker-ships.jpg"
     },
     { 
       name: "Cruise Ships", 
       description: "Passenger and cruise vessels",
-      image: "/src5.jpg"
+      image: "/cruise-ships.jpg"
     },
     { 
       name: "Supply Boats", 
       description: "Offshore support vessels",
-      image: "/src6.jpg"
+      image: "/supply-boats.jpg"
     },
     { 
       name: "Military Vessels", 
       description: "Naval and coast guard ships",
-      image: "/src7.jpg"
+      image: "/military-vessels.jpg"
     },
     { 
       name: "Cargo Ships", 
