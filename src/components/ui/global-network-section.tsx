@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { InteractiveWorldMap } from "@/components/InteractiveWorldMap";
 
 export function GlobalNetworkSection() {
   const regions = [
@@ -199,6 +200,11 @@ export function GlobalNetworkSection() {
             From Canada to Argentina, we provide comprehensive maritime services throughout all of North, Central, and South America. 
             With presence in 15+ countries and 75+ major ports, Anchor Global delivers seamless support wherever your operations take you.
           </p>
+        </div>
+
+        {/* Interactive World Map */}
+        <div className="mb-20">
+          <InteractiveWorldMap />
         </div>
 
         {/* Regional Breakdown */}
