@@ -1,23 +1,23 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Services from "@/components/Services";
-import Solutions from "@/components/Solutions";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import { Navigation } from "@/components/ui/navigation";
+import { HeroSection } from "@/components/ui/hero-section";
+import { AboutSection } from "@/components/ui/about-section";
+import { ServicesSection } from "@/components/ui/services-section";
+import { GlobalNetworkSection } from "@/components/ui/global-network-section";
+import { ContactSection } from "@/components/ui/contact-section";
+import { Footer } from "@/components/ui/footer";
 
-export default function Home() {
+const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Solutions />
-        <Contact />
-      </main>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <GlobalNetworkSection />
+      <ContactSection />
       <Footer />
     </div>
   );
-}
+};
+
+export default Index;
