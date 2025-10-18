@@ -16,7 +16,7 @@ const smoothScroll = (targetId: string) => {
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -50,7 +50,7 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
         <div className="max-w-5xl mx-auto">
           {/* Icon */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-8 pt-10">
             <div className="w-20 h-20 bg-[rgb(252,251,248)]/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-[rgb(252,251,248)]/30 shadow-2xl" style={{animation: 'float 3s ease-in-out infinite'}}>
               <Anchor className="w-10 h-10 text-[rgb(252,251,248)]" />
             </div>
