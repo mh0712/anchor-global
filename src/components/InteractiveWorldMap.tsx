@@ -78,24 +78,20 @@ export function InteractiveWorldMap() {
     { city: "Georgetown", country: "Guyana", region: "South America", lat: 6.8013, lng: -58.1551, phone: "+592 555-0100", email: "guyana@anchorglobal.com", flag: "🇬🇾" },
   ];
 
-  // Convert lat/lng to SVG coordinates using TWO reference anchor points
+  // Convert lat/lng to SVG coordinates using calibrated Mercator projection
   const projectToSVG = (lat: number, lng: number) => {
-    const RECIFE_LAT = -8.0476; 
-    const RECIFE_LNG = -34.8770;
-    const RECIFE_SVG_X = 372;   
-    const RECIFE_SVG_Y = 476;   
-    
-    const HALIFAX_LAT = 44.6488; 
-    const HALIFAX_LNG = -63.5752;
-    const HALIFAX_SVG_X = 324;
-    const HALIFAX_SVG_Y = 265;
-    
-    // Calculate X using both longitude reference points
-    const x = RECIFE_SVG_X + (lng - RECIFE_LNG) * ((HALIFAX_SVG_X - RECIFE_SVG_X) / (HALIFAX_LNG - RECIFE_LNG));
-    
-    // Calculate Y using both latitude reference points
-    const y = RECIFE_SVG_Y + (lat - RECIFE_LAT) * ((HALIFAX_SVG_Y - RECIFE_SVG_Y) / (HALIFAX_LAT - RECIFE_LAT));
-    
+    const mapWidth = 1000;
+    const mapHeight = 640;
+    const minLong = -180;
+    const maxLong = 180;
+    const latRad = lat * Math.PI / 180;
+    let x = (lng - minLong) * (mapWidth / (maxLong - minLong));
+    const mercN = Math.log(Math.tan(Math.PI / 4 + latRad / 2));
+    let y = (mapHeight / 2) - (mapWidth * mercN / (2 * Math.PI));
+    const xOffset = -30;
+    const yOffset = 135;
+    x += xOffset;
+    y += yOffset;
     return { x, y };
   };
 
