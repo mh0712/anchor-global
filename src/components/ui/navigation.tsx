@@ -87,7 +87,7 @@ export function Navigation({ className }: NavigationProps) {
                   <DropdownMenuItem
                     key={country.code}
                     onClick={() => setCurrentCountry(country.code)}
-                    className="cursor-pointer"
+                    className="cursor-pointer text-white hover:bg-[rgb(1,61,110)] hover:text-[rgb(252,251,248)] transition-colors duration-200"
                   >
                     <span className="mr-2">{country.flag}</span>
                     {country.name}
