@@ -16,7 +16,7 @@ const smoothScroll = (targetId: string) => {
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -32,25 +32,31 @@ export function HeroSection() {
       
       {/* Animated overlay particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-[rgb(252,251,248)]/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${5 + Math.random() * 5}s ease-in-out infinite`,
-              animationDelay: `${i * 0.3}s`
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => {
+          const duration = 5 + Math.random() * 5;
+          return (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-[rgb(252,251,248)]/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationName: 'float',
+                animationDuration: `${duration}s`,
+                animationTimingFunction: 'ease-in-out',
+                animationIterationCount: 'infinite',
+                animationDelay: `${i * 0.3}s`
+              }}
+            />
+          );
+        })}
       </div>
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
         <div className="max-w-5xl mx-auto">
           {/* Icon */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-8 pt-10">
             <div className="w-20 h-20 bg-[rgb(252,251,248)]/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-[rgb(252,251,248)]/30 shadow-2xl" style={{animation: 'float 3s ease-in-out infinite'}}>
               <Anchor className="w-10 h-10 text-[rgb(252,251,248)]" />
             </div>
@@ -117,14 +123,6 @@ export function HeroSection() {
         </div>
       </div>
       
-      {/* Scroll Indicator */}
-      <div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" 
-        onClick={() => smoothScroll('#about')}>
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center hover:border-[rgb(252,251,248)] transition-colors duration-300">
-          <div className="w-1 h-2 bg-white/50 rounded-full mt-2"></div>
-        </div>
-      </div>
     </section>
   );
 }
