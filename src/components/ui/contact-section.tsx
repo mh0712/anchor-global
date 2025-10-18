@@ -320,32 +320,6 @@ export function ContactSection() {
             ))}
 
             {/* Additional Info */}
-            <Card className="bg-[rgb(252,251,248)] text-[#003366] border-2 border-[rgb(252,251,248)] shadow-xl animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-              <CardContent className="p-8 pt-8">
-                <h4 className="font-bold mb-6 text-lg flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-3" />
-                  Response Times
-                </h4>
-                <div className="space-y-4 text-sm">
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-[#003366] rounded-full mr-3 animate-pulse flex-shrink-0"></div>
-                    <span>Emergency: Immediate</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0"></div>
-                    <span>Standard Inquiries: Within 24 hours</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0"></div>
-                    <span>Quotes: Within 48 hours</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0"></div>
-                    <span>Technical Support: Same day</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
