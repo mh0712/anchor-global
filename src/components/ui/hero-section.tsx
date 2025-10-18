@@ -32,18 +32,24 @@ export function HeroSection() {
       
       {/* Animated overlay particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-[rgb(252,251,248)]/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${5 + Math.random() * 5}s ease-in-out infinite`,
-              animationDelay: `${i * 0.3}s`
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => {
+          const duration = 5 + Math.random() * 5;
+          return (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-[rgb(252,251,248)]/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationName: 'float',
+                animationDuration: `${duration}s`,
+                animationTimingFunction: 'ease-in-out',
+                animationIterationCount: 'infinite',
+                animationDelay: `${i * 0.3}s`
+              }}
+            />
+          );
+        })}
       </div>
       
       {/* Content */}
