@@ -1,7 +1,9 @@
 "use client";
 
+import regionalContactsData from "@/data/regionalContacts.json";
 import Image from "next/image";
 import { useState } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,6 +24,7 @@ import {
 export function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -82,32 +85,25 @@ export function ContactSection() {
     setIsSubmitting(false);
   };
 
-  const regionalContacts = [
-    {
-      region: "United States",
-      flag: "🇺🇸",
-      phone: "+1 (832) 584-3574",
-      email: "triton@tritonmaritime.us",
-      address: "Houston, Texas",
-      timezone: "CST (UTC-6)"
-    },
-    {
-      region: "Mexico", 
-      flag: "🇲🇽",
-      phone: "+52 229 931 7640",
-      email: "triton@tritonmaritime.mx",
-      address: "Veracruz, Mexico",
-      timezone: "CST (UTC-6)"
-    },
-    {
-      region: "Brazil",
-      flag: "🇧🇷", 
-      phone: "+55 21 3614-0168",
-      email: "purchase@tritonmaritime.com.br",
-      address: "Rio de Janeiro, Brazil",
-      timezone: "BRT (UTC-3)"
-    }
-  ];
+
+  // Map emails from env vars (server-side only)
+  const regionalContacts = (regionalContactsData as Array<{
+    region: string;
+    flag: string;
+    phone: string;
+    email: string;
+    address: string;
+    timezone: string;
+  }>).map(contact => ({
+    ...contact,
+    email: typeof window === "undefined" ? (process.env[contact.email] || "") : ""
+  }));
+
+  // For dropdown selection
+  const [selectedCountry, setSelectedCountry] = useState(regionalContacts[0].region);
+
+  // Get selected contact info
+  const selectedContact = regionalContacts.find(c => c.region === selectedCountry);
 
   return (
     <section id="contact" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
@@ -125,23 +121,33 @@ export function ContactSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-slate-50/80 to-white/90" />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20 animate-fade-in-up">
-          <Badge className="mb-4 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-4 py-2">
-            Get In Touch
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-8">
-            Contact Our Team
-          </h2>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Ready to discuss your maritime needs? Our experienced team is available 24/7 
-            to provide expert consultation and immediate assistance.
-          </p>
-        </div>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+          {/* Left: Header/Intro */}
+          <div className="w-full lg:w-1/2 mb-12 lg:mb-0 animate-fade-in-up">
+            <Badge className="mb-4 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-4 py-2">
+              Get In Touch
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-8">
+              Contact Our Team
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
+              Ready to discuss your maritime needs? Our experienced team is available 24/7 
+              to provide expert consultation and immediate assistance.
+            </p>
+            {/* Optional image for visual enhancement */}
+            <div className="mt-8 hidden md:block">
+              <Image 
+                src="/contact-visual.png" 
+                alt="Contact Visual" 
+                width={400} 
+                height={300} 
+                className="rounded-xl shadow-lg object-cover"
+              />
+            </div>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
+          {/* Right: Contact Form */}
+          <div className="w-full lg:w-1/2 max-w-2xl">
             <Card className="bg-white border-2 border-slate-200 shadow-xl animate-fade-in-up">
               <CardHeader className="p-8 space-y-0">
                 <CardTitle className="text-2xl font-bold text-[#003366] flex items-center mb-4">
@@ -184,6 +190,72 @@ export function ContactSection() {
                     </div>
                   </div>
 
+                  {/* Country Dropdown */}
+                  <div className="mb-6">
+                    <label htmlFor="country" className="text-sm font-semibold text-[#003366] mb-2 block">
+                      Country / Region
+                    </label>
+                    <div className="relative">
+                      {/* Custom Dropdown Button */}
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="w-full h-12 px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] flex items-center justify-between text-left"
+                      >
+                        <div className="flex items-center">
+                          {selectedContact && (
+                            <ReactCountryFlag 
+                              countryCode={selectedContact.flag} 
+                              svg 
+                              style={{ 
+                                width: "1.2em", 
+                                height: "1.2em",
+                                marginRight: "0.75rem"
+                              }} 
+                            />
+                          )}
+                          <span>{selectedCountry}</span>
+                        </div>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      {/* Dropdown Options */}
+                      {isDropdownOpen && (
+                        <div className="absolute z-50 w-full mt-1 bg-white border border-slate-300 rounded-lg shadow-lg max-h-60 overflow-auto">
+                          {regionalContacts.map((contact, idx) => (
+                            <button
+                              key={contact.region}
+                              type="button"
+                              onClick={() => {
+                                setSelectedCountry(contact.region);
+                                setIsDropdownOpen(false);
+                              }}
+                              className="w-full px-3 py-3 text-left hover:bg-slate-50 flex items-center transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                            >
+                              <ReactCountryFlag 
+                                countryCode={contact.flag} 
+                                svg 
+                                style={{ 
+                                  width: "1.2em", 
+                                  height: "1.2em",
+                                  marginRight: "0.75rem"
+                                }} 
+                              />
+                              <span className="text-slate-900">{contact.region}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-sm font-semibold text-[#003366]">
@@ -195,7 +267,7 @@ export function ContactSection() {
                         type="email" 
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="your.email@example.com" 
+                        placeholder={selectedContact?.email || "your.email@example.com"}
                         required 
                         className="h-12 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
                       />
@@ -210,7 +282,7 @@ export function ContactSection() {
                         type="tel" 
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+1 (555) 123-4567" 
+                        placeholder={selectedContact?.phone || "+1 (555) 123-4567"}
                         className="h-12 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
                       />
                     </div>
@@ -280,63 +352,6 @@ export function ContactSection() {
 
           {/* Contact Information */}
           <div className="space-y-6">
-            {/* Emergency Contact */}
-            <Card className="bg-[#003366] border-2 border-[rgb(252,251,248)]/20 shadow-xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <CardHeader className="p-6 pb-4 space-y-0">
-                <CardTitle className="text-lg flex items-center text-white font-bold mb-3">
-                  <Clock className="w-5 h-5 mr-3 text-[rgb(252,251,248)]" />
-                  24/7 Emergency Support
-                </CardTitle>
-                <CardDescription className="text-base text-white/80">
-                  Immediate assistance for urgent maritime needs
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="px-6 pb-6 pt-2">
-                <div className="space-y-4">
-                  <div className="flex items-center text-sm font-medium text-white">
-                    <Phone className="w-4 h-4 mr-3 text-[rgb(252,251,248)]" />
-                    <span className="font-bold">+1 (832) 584-3574</span>
-                  </div>
-                  <div className="flex items-center text-sm text-white/90">
-                    <Mail className="w-4 h-4 mr-3 text-[rgb(252,251,248)]" />
-                    <span>emergency@tritonmaritime.com</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Regional Contacts */}
-            {regionalContacts.map((contact, index) => (
-              <Card key={index} className="bg-white border-2 border-slate-200 animate-fade-in-up hover:shadow-xl hover:border-[rgb(252,251,248)] transition-all duration-500" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
-                <CardHeader className="p-6 pb-4 space-y-0">
-                  <CardTitle className="text-lg flex items-center text-[#003366] font-bold">
-                    <span className="text-2xl mr-3">{contact.flag}</span>
-                    {contact.region}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="px-6 pb-6 pt-2">
-                  <div className="space-y-4">
-                    <div className="flex items-center text-sm text-slate-700">
-                      <Phone className="w-4 h-4 mr-3 text-slate-500 flex-shrink-0" />
-                      <span className="font-medium">{contact.phone}</span>
-                    </div>
-                    <div className="flex items-center text-sm text-slate-700">
-                      <Mail className="w-4 h-4 mr-3 text-slate-500 flex-shrink-0" />
-                      <span className="break-all">{contact.email}</span>
-                    </div>
-                    <div className="flex items-center text-sm text-slate-700">
-                      <MapPin className="w-4 h-4 mr-3 text-slate-500 flex-shrink-0" />
-                      <span>{contact.address}</span>
-                    </div>
-                    <div className="flex items-center text-sm text-slate-700">
-                      <Globe className="w-4 h-4 mr-3 text-slate-500 flex-shrink-0" />
-                      <span>{contact.timezone}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-
             {/* Additional Info */}
           </div>
         </div>
