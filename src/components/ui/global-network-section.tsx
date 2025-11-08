@@ -169,24 +169,6 @@ export function GlobalNetworkSection() {
 
   return (
     <section id="network" className="py-24 md:py-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Background Images */}
-      <div className="absolute top-0 right-0 w-1/3 h-96 opacity-10">
-        <Image 
-          src="/src11.jpg" 
-          alt="Global network" 
-          fill 
-          className="object-cover" 
-        />
-      </div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-96 opacity-10">
-        <Image 
-          src="/src12.jpg" 
-          alt="Port operations" 
-          fill 
-          className="object-cover" 
-        />
-      </div>
-      
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -197,36 +179,14 @@ export function GlobalNetworkSection() {
             Our Americas-Wide Network
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            From Canada to Argentina, we provide comprehensive maritime services throughout all of North, Central, and South America. 
-            With presence in 15+ countries and 75+ major ports, Anchor Global delivers seamless support wherever your operations take you.
+            We provide comprehensive maritime services for vessels worldwide. 
+            With operations in 15+ countries and 75+ major ports, Anchor Global delivers seamless support wherever your operations take you.
           </p>
         </div>
 
         {/* Interactive World Map */}
         <div className="mb-20">
           <InteractiveWorldMap />
-        </div>
-
-        {/* Summary Stats */}
-        <div className="mt-16 bg-gradient-maritime rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">15+</div>
-              <div className="text-primary-foreground/80">Countries</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">75+</div>
-              <div className="text-primary-foreground/80">Major Ports</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">3</div>
-              <div className="text-primary-foreground/80">Regions</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">24/7</div>
-              <div className="text-primary-foreground/80">Global Support</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

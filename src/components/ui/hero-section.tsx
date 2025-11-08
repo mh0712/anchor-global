@@ -73,7 +73,7 @@ export function HeroSection() {
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
             <strong className="font-bold">22 years</strong> of experience providing comprehensive husbanding services throughout 
-            <strong className="text-[rgb(252,251,248)] font-bold"> North America, Central America, South America, and the Caribbean</strong>
+            <strong className="text-[rgb(252,251,248)] font-bold"> North America, Central America, South America, Caribbean, , Europe, and Middle East</strong>
           </p>
           
           {/* Description */}

@@ -70,7 +70,7 @@ export function Footer() {
             </div>
             <p className="text-white/80 mb-8 leading-relaxed text-base">
               22 years of excellence in maritime services. Providing comprehensive 
-              husbanding solutions throughout the Americas - from Canada to Argentina.
+              husbanding solutions for vessels worldwide, with a presence across the Americas, Europe, and the Middle East.
             </p>
             <div className="space-y-4">
               <div className="flex items-center text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">

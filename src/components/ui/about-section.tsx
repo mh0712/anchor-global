@@ -29,7 +29,7 @@ export function AboutSection() {
     {
       icon: Globe,
       title: "Global Reach",
-      description: "Extensive network across 15+ countries and 75+ ports throughout the Americas"
+      description: "Extensive network across 15+ countries and 75+ ports worldwide"
     },
     {
       icon: Clock,
@@ -40,8 +40,8 @@ export function AboutSection() {
 
   const achievements = [
     "22+ years of maritime industry experience",
-    "Serving 15+ countries throughout the Americas",
-    "75+ major ports from Canada to Argentina",
+    "Serving 15+ countries across the globe",
+    "75+ major ports worldwide",
     "Military vessel security clearances",
     "24/7 emergency response capability",
     "ISO-certified quality management"
@@ -75,10 +75,7 @@ export function AboutSection() {
               </h2>
               <p className="text-lg text-slate-700 mb-6 leading-relaxed">
                 At Anchor Global, we have built our reputation on delivering exceptional 
-                husbanding services throughout the Americas. From the northern ports of Canada to the 
-                southern coasts of Argentina, our extensive experience in the maritime industry, combined 
-                with our commitment to quality and efficiency, makes us the trusted partner for vessel 
-                operators across North, Central, and South America.
+                husbanding services worldwide. From the northern ports of Canada to the southern coasts of Argentina, and across major maritime hubs in Europe and the Middle East, our extensive experience in the maritime industry—combined with our commitment to quality and efficiency—makes us the trusted partner for vessel operators around the globe.
               </p>
               
               <p className="text-base text-slate-600 mb-8">
@@ -131,7 +128,7 @@ export function AboutSection() {
                   Professional Maritime Services
                 </h3>
                 <p className="text-white/90 text-sm">
-                  Supporting all vessel types across the Americas
+                  Supporting all vessel types across the Americas, Europe, and Middle East
                 </p>
               </div>
             </div>
