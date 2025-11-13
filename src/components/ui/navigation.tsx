@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
@@ -49,8 +50,8 @@ export function Navigation({ className }: NavigationProps) {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl">
-              <Anchor className="w-4 h-4 text-[#003366]" />
+            <div className="w-12 h-12 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl overflow-hidden">
+              <Image src="/Picture1.png" alt="Company Logo" width={40} height={40} />
             </div>
             <span className="text-white font-bold text-base tracking-wide">
               ANCHOR GLOBAL
