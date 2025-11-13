@@ -2,25 +2,73 @@
   {
     "region": "United States",
     "flag": "US",
-    "phone": "+1 (832) 584-3574",
-    "email": "US_CONTACT_EMAIL",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
     "address": "Houston, Texas",
-    "timezone": "CST (UTC-6)"
+    "timezone": "CST (UTC-6)",
+    "services": ["Husbanding Agency", "Ship Supply", "Logistics"]
   },
   {
     "region": "Mexico",
     "flag": "MX",
-    "phone": "+52 229 931 7640",
-    "email": "MEXICO_CONTACT_EMAIL",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
     "address": "Veracruz, Mexico",
-    "timezone": "CST (UTC-6)"
+    "timezone": "CST (UTC-6)",
+    "services": ["Ship Owner", "Husbanding Agency", "Ship Chandler", "Logistics"]
   },
   {
     "region": "Brazil",
     "flag": "BR",
-    "phone": "+55 21 3614-0168",
-    "email": "BRAZIL_CONTACT_EMAIL",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
     "address": "Rio de Janeiro, Brazil",
-    "timezone": "BRT (UTC-3)"
+    "timezone": "BRT (UTC-3)",
+    "services": ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"]
+  },
+  {
+    "region": "Guyana",
+    "flag": "GY",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
+    "address": "Georgetown, Guyana",
+    "timezone": "GYT (UTC-4)",
+    "services": ["Husbanding Agency", "Ship Supply", "Logistics"]
+  },
+  {
+    "region": "Portugal",
+    "flag": "PT",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
+    "address": "Lisbon, Portugal",
+    "timezone": "WET (UTC+0)",
+    "services": ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"]
+  },
+  {
+    "region": "Spain",
+    "flag": "ES",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
+    "address": "Barcelona, Spain",
+    "timezone": "CET (UTC+1)",
+    "services": ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"]
+  },
+  {
+    "region": "Trinidad & Tobago",
+    "flag": "TT",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
+    "address": "Port of Spain, Trinidad",
+    "timezone": "AST (UTC-4)",
+    "services": ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"]
+  },
+  {
+    "region": "Lebanon",
+    "flag": "LB",
+    "phone": "GLOBAL_CONTACT_PHONE",
+    "email": "GLOBAL_CONTACT_EMAIL",
+    "address": "Beirut, Lebanon",
+    "timezone": "EET (UTC+2)",
+    "services": ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"]
   }
 ]

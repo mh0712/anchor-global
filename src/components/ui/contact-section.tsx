@@ -86,7 +86,7 @@ export function ContactSection() {
   };
 
 
-  // Map emails from env vars (server-side only)
+  // Map emails and phone numbers from env vars (server-side only)
   const regionalContacts = (regionalContactsData as Array<{
     region: string;
     flag: string;
@@ -96,7 +96,8 @@ export function ContactSection() {
     timezone: string;
   }>).map(contact => ({
     ...contact,
-    email: typeof window === "undefined" ? (process.env[contact.email] || "") : ""
+    email: typeof window === "undefined" ? (process.env[contact.email] || "") : "",
+    phone: typeof window === "undefined" ? (process.env[contact.phone] || contact.phone) : contact.phone
   }));
 
   // For dropdown selection
@@ -203,12 +204,12 @@ export function ContactSection() {
                         className="w-full h-7 px-2 py-1 border border-slate-300 rounded-lg bg-white text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] text-xs"
                       >
                         <option value="">Select a service</option>
-                        <option value="husbanding">Husbanding Services</option>
-                        <option value="fuel">Fuel & Lubricants</option>
-                        <option value="chandlery">Ship Chandlery</option>
-                        <option value="logistics">Port Logistics</option>
-                        <option value="crew">Crew Services</option>
-                        <option value="military">Military Support</option>
+                        <option value="husbanding">Husbanding Agency</option>
+                        <option value="ship-supply">Ship Supply</option>
+                        <option value="crew-management">Crew Management</option>
+                        <option value="logistics">Logistics</option>
+                        <option value="ship-chandler">Ship Chandler</option>
+                        <option value="ship-owner">Ship Owner Services</option>
                         <option value="other">Other</option>
                       </select>
                     </div>

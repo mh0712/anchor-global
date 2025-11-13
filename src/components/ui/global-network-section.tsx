@@ -3,8 +3,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { InteractiveWorldMap } from "@/components/InteractiveWorldMap";
+import globalConfig from "@/config/globalConfig.json";
 
 export function GlobalNetworkSection() {
+  const { phone: globalPhone, email: globalEmail } = globalConfig.globalContact;
   const regions = [
     {
       region: "North America",
@@ -12,19 +14,12 @@ export function GlobalNetworkSection() {
         {
           name: "United States",
           flag: "🇺🇸",
-          cities: ["Houston", "New Orleans", "Miami", "Los Angeles", "New York", "Seattle", "Portland", "San Francisco", "Long Beach"],
+          cities: ["New York", "Miami", "Los Angeles", "Houston", "New Orleans"],
+          services: ["Husbanding Agency", "Ship Supply", "Logistics"],
+          description: "Operating in East Coast, West Coast & Gulf of Mexico",
           contact: {
-            phone: "+1 (832) 584-3574",
-            email: "usa@anchorglobal.com"
-          }
-        },
-        {
-          name: "Canada",
-          flag: "🇨🇦",
-          cities: ["Vancouver", "Halifax", "Montreal", "Quebec City", "Toronto"],
-          contact: {
-            phone: "+1 (604) 555-0100",
-            email: "canada@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
           }
         }
       ]
@@ -35,55 +30,23 @@ export function GlobalNetworkSection() {
         {
           name: "Mexico",
           flag: "🇲🇽",
-          cities: ["Veracruz", "Tampico", "Altamira", "Coatzacoalcos", "Manzanillo", "Lázaro Cárdenas"],
+          cities: ["Veracruz", "Tampico", "Manzanillo"],
+          services: ["Ship Owner", "Husbanding Agency", "Ship Chandler", "Logistics"],
+          description: "Comprehensive maritime services across major Mexican ports",
           contact: {
-            phone: "+52 229 931 7640",
-            email: "mexico@anchorglobal.com"
-          }
-        },
-        {
-          name: "Panama",
-          flag: "🇵🇦",
-          cities: ["Panama City", "Colón", "Balboa"],
-          contact: {
-            phone: "+507 555-0100",
-            email: "panama@anchorglobal.com"
-          }
-        },
-        {
-          name: "Costa Rica",
-          flag: "🇨🇷",
-          cities: ["Puerto Limón", "Puntarenas"],
-          contact: {
-            phone: "+506 555-0100",
-            email: "costarica@anchorglobal.com"
-          }
-        },
-        {
-          name: "Jamaica",
-          flag: "🇯🇲",
-          cities: ["Kingston", "Montego Bay"],
-          contact: {
-            phone: "+1 876 555-0100",
-            email: "jamaica@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
           }
         },
         {
           name: "Trinidad & Tobago",
           flag: "🇹🇹",
-          cities: ["Port of Spain", "Point Lisas"],
+          cities: ["Port of Spain"],
+          services: ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"],
+          description: "Strategic Caribbean hub for maritime operations",
           contact: {
-            phone: "+1 868 555-0100",
-            email: "trinidad@anchorglobal.com"
-          }
-        },
-        {
-          name: "Dominican Republic",
-          flag: "🇩🇴",
-          cities: ["Santo Domingo", "Puerto Plata"],
-          contact: {
-            phone: "+1 809 555-0100",
-            email: "dominicanrep@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
           }
         }
       ]
@@ -94,73 +57,66 @@ export function GlobalNetworkSection() {
         {
           name: "Brazil",
           flag: "🇧🇷",
-          cities: ["Santos", "Rio de Janeiro", "Vitória", "Salvador", "Recife", "Manaus"],
+          cities: ["Santos", "Rio de Janeiro", "Salvador"],
+          services: ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"],
+          description: "Full-service operations across Brazil's major ports",
           contact: {
-            phone: "+55 21 3614-0168",
-            email: "brasil@anchorglobal.com"
-          }
-        },
-        {
-          name: "Colombia",
-          flag: "🇨🇴",
-          cities: ["Cartagena", "Barranquilla", "Buenaventura"],
-          contact: {
-            phone: "+57 555-0100",
-            email: "colombia@anchorglobal.com"
-          }
-        },
-        {
-          name: "Venezuela",
-          flag: "🇻🇪",
-          cities: ["La Guaira", "Maracaibo", "Puerto Cabello"],
-          contact: {
-            phone: "+58 555-0100",
-            email: "venezuela@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
           }
         },
         {
           name: "Guyana",
           flag: "🇬🇾",
-          cities: ["Georgetown", "New Amsterdam"],
+          cities: ["Georgetown"],
+          services: ["Husbanding Agency", "Ship Supply", "Logistics"],
+          description: "Gateway services for South American operations",
           contact: {
-            phone: "+592 555-0100",
-            email: "guyana@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
+          }
+        }
+      ]
+    },
+    {
+      region: "Europe",
+      countries: [
+        {
+          name: "Portugal",
+          flag: "🇵🇹",
+          cities: ["Lisbon", "Porto"],
+          services: ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"],
+          description: "Strategic European Atlantic gateway",
+          contact: {
+            phone: globalPhone,
+            email: globalEmail
           }
         },
         {
-          name: "Argentina",
-          flag: "🇦🇷",
-          cities: ["Buenos Aires", "Rosario", "Bahía Blanca"],
+          name: "Spain",
+          flag: "🇪🇸",
+          cities: ["Barcelona", "Valencia", "Bilbao"],
+          services: ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"],
+          description: "Comprehensive services across Spanish Mediterranean and Atlantic ports",
           contact: {
-            phone: "+54 555-0100",
-            email: "argentina@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
           }
-        },
+        }
+      ]
+    },
+    {
+      region: "Middle East",
+      countries: [
         {
-          name: "Chile",
-          flag: "🇨🇱",
-          cities: ["Valparaíso", "San Antonio", "Iquique"],
+          name: "Lebanon",
+          flag: "🇱🇧",
+          cities: ["Beirut", "Tripoli"],
+          services: ["Husbanding Agency", "Ship Supply", "Crew Management", "Logistics"],
+          description: "Eastern Mediterranean maritime services hub",
           contact: {
-            phone: "+56 555-0100",
-            email: "chile@anchorglobal.com"
-          }
-        },
-        {
-          name: "Peru",
-          flag: "🇵🇪",
-          cities: ["Callao", "Paita", "Matarani"],
-          contact: {
-            phone: "+51 555-0100",
-            email: "peru@anchorglobal.com"
-          }
-        },
-        {
-          name: "Ecuador",
-          flag: "🇪🇨",
-          cities: ["Guayaquil", "Manta", "Puerto Bolívar"],
-          contact: {
-            phone: "+593 555-0100",
-            email: "ecuador@anchorglobal.com"
+            phone: globalPhone,
+            email: globalEmail
           }
         }
       ]
@@ -176,11 +132,11 @@ export function GlobalNetworkSection() {
             Global Presence
           </Badge>
           <h2 className="text-xl md:text-2xl font-bold text-[#003366] mb-3">
-            Our Americas-Wide Network
+            Our Global Network
           </h2>
           <p className="text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
             We provide comprehensive maritime services for vessels worldwide. 
-            With operations in 15+ countries and 75+ major ports, Anchor Global delivers seamless support wherever your operations take you.
+            With operations in 8 countries across the Americas, Europe, and Middle East, Anchor Global delivers seamless support wherever your operations take you.
           </p>
         </div>
 
