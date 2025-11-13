@@ -63,7 +63,7 @@ export function AboutSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-slate-50/60 to-white/80" />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
           {/* Left Column - Content */}
           <div className="space-y-4">
             <div className="animate-fade-in-up">
@@ -86,22 +86,42 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {values.map((value, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-start space-x-2 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 group"
-                  style={{animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`, opacity: 0}}
-                >
-                  <div className="w-8 h-8 bg-[rgb(252,251,248)]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[rgb(252,251,248)]/30 transition-colors duration-300 mt-0.5">
-                    <value.icon className="w-4 h-4 text-[#003366]" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-start">
+              {/* Value Cards Vertical Stack - Smaller */}
+              <div className="flex flex-col gap-2">
+                {values.map((value, index) => (
+                  <div 
+                    key={index} 
+                    className="flex items-start space-x-2 p-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 group"
+                    style={{animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`, opacity: 0}}
+                  >
+                    <div className="w-6 h-6 bg-[rgb(252,251,248)]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[rgb(252,251,248)]/30 transition-colors duration-300 mt-0.5">
+                      <value.icon className="w-3 h-3 text-[#003366]" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-[#003366] mb-0.5 text-[11px]">{value.title}</h4>
+                      <p className="text-[11px] text-slate-600 leading-snug">{value.description}</p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-[#003366] mb-1 text-xs">{value.title}</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">{value.description}</p>
+                ))}
+              </div>
+              {/* Key Achievements Card - Smaller and Top Aligned */}
+              <Card className="bg-white shadow-lg animate-fade-in-up overflow-hidden h-full flex flex-col justify-start">
+                <CardContent className="p-3 md:p-4">
+                  <h3 className="text-sm md:text-base font-bold text-[#003366] mb-2 flex items-center">
+                    <Award className="w-4 h-4 text-[rgb(252,251,248)] mr-2" />
+                    Key Achievements
+                  </h3>
+                  <div className="space-y-1.5">
+                    {achievements.map((achievement, index) => (
+                      <div key={index} className="flex items-start space-x-2">
+                        <CheckCircle className="w-3 h-3 text-[rgb(252,251,248)] flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-700 text-[11px] md:text-xs leading-snug">{achievement}</span>
+                      </div>
+                    ))}
                   </div>
-                </div>
-              ))}
+                </CardContent>
+              </Card>
             </div>
 
             <Button className="bg-[#003366] hover:bg-[#002244] text-white px-4 py-3 text-xs font-semibold shadow-lg transition-all duration-300 hover:scale-105 group">
@@ -132,9 +152,8 @@ export function AboutSection() {
                 </p>
               </div>
             </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Stats Grid Only */}
+            <div className="grid grid-cols-2 gap-2">
               {[
                 { value: "22+", label: "Years Experience", color: "bg-[#003366]" },
                 { value: "15+", label: "Countries", color: "bg-[rgb(252,251,248)]" },
@@ -157,24 +176,6 @@ export function AboutSection() {
                 </Card>
               ))}
             </div>
-
-            {/* Achievements */}
-            <Card className="bg-white shadow-lg animate-fade-in-up overflow-hidden">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-[#003366] mb-6 flex items-center">
-                  <Award className="w-6 h-6 text-[rgb(252,251,248)] mr-3" />
-                  Key Achievements
-                </h3>
-                <div className="space-y-4">
-                  {achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-[rgb(252,251,248)] flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700 text-sm leading-relaxed">{achievement}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
