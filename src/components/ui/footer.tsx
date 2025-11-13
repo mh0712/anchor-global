@@ -1,5 +1,6 @@
 "use client";
 
+
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -12,11 +13,15 @@ import {
   Globe,
   ChevronUp
 } from "lucide-react";
+import globalConfig from "@/config/globalConfig.json";
+
 
 export function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const { phone, email } = globalConfig.globalContact;
 
   const quickLinks = [
     { name: "About Us", href: "#about" },
@@ -75,11 +80,11 @@ export function Footer() {
             <div className="space-y-2">
               <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
                 <Phone className="w-3 h-3 mr-2" />
-                <span className="font-medium">+1 (832) 584-3574</span>
+                <span className="font-medium">{phone}</span>
               </div>
               <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
                 <Mail className="w-4 h-4 mr-3" />
-                <span>info@anchorglobal.com</span>
+                <span>{email}</span>
               </div>
               <div className="flex items-center text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200">
                 <MapPin className="w-4 h-4 mr-3" />
