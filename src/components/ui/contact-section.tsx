@@ -106,7 +106,7 @@ export function ContactSection() {
   const selectedContact = regionalContacts.find(c => c.region === selectedCountry);
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+  <section id="contact" className="pt-0 pb-8 md:pt-0 md:pb-10 bg-slate-50 relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">
         <Image 
@@ -120,49 +120,49 @@ export function ContactSection() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-slate-50/80 to-white/90" />
 
-      <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+      <div className="container mx-auto px-4 lg:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
           {/* Left: Header/Intro */}
-          <div className="w-full lg:w-1/2 mb-12 lg:mb-0 animate-fade-in-up">
-            <Badge className="mb-4 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-4 py-2">
+          <div className="w-full lg:w-1/2 mb-4 lg:mb-0 animate-fade-in-up">
+            <Badge className="mb-1 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-1.5 py-0.5 text-[10px]">
               Get In Touch
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-8">
+            <h2 className="text-base md:text-lg font-bold text-[#003366] mb-2">
               Contact Our Team
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
+            <p className="text-xs text-slate-600 max-w-xl leading-snug">
               Ready to discuss your maritime needs? Our experienced team is available 24/7 
               to provide expert consultation and immediate assistance.
             </p>
             {/* Optional image for visual enhancement */}
-            <div className="mt-8 hidden md:block">
+            <div className="mt-2 hidden md:block">
               <Image 
                 src="/contact-visual.png" 
                 alt="Contact Visual" 
-                width={400} 
-                height={300} 
+                width={180} 
+                height={110} 
                 className="rounded-xl shadow-lg object-cover"
               />
             </div>
           </div>
 
           {/* Right: Contact Form */}
-          <div className="w-full lg:w-1/2 max-w-2xl">
-            <Card className="bg-white border-2 border-slate-200 shadow-xl animate-fade-in-up">
-              <CardHeader className="p-8 space-y-0">
-                <CardTitle className="text-2xl font-bold text-[#003366] flex items-center mb-4">
-                  <MessageSquare className="w-6 h-6 mr-3 text-[rgb(252,251,248)]" />
+          <div className="w-full lg:w-1/2 max-w-lg">
+            <Card className="bg-white border border-slate-200 shadow-lg animate-fade-in-up">
+              <CardHeader className="p-3 space-y-0">
+                <CardTitle className="text-sm font-bold text-[#003366] flex items-center mb-1">
+                  <MessageSquare className="w-3.5 h-3.5 mr-2 text-[rgb(252,251,248)]" />
                   Send Us a Message
                 </CardTitle>
-                <CardDescription className="text-lg text-slate-600">
+                <CardDescription className="text-[11px] text-slate-600">
                   Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="px-8 pb-8 pt-0">
+              <CardContent className="px-3 pb-3 pt-0">
                 <form onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-semibold text-[#003366]">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+                    <div className="space-y-0.5">
+                      <label htmlFor="name" className="text-[11px] font-semibold text-[#003366]">
                         Full Name *
                       </label>
                       <Input 
@@ -172,11 +172,11 @@ export function ContactSection() {
                         onChange={handleInputChange}
                         placeholder="Your full name" 
                         required 
-                        className="h-12 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
+                        className="h-7 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] text-xs"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="company" className="text-sm font-semibold text-[#003366]">
+                    <div className="space-y-0.5">
+                      <label htmlFor="company" className="text-[11px] font-semibold text-[#003366]">
                         Company
                       </label>
                       <Input 
@@ -185,80 +185,99 @@ export function ContactSection() {
                         value={formData.company}
                         onChange={handleInputChange}
                         placeholder="Your company name" 
-                        className="h-12 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
+                        className="h-7 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] text-xs"
                       />
                     </div>
                   </div>
 
-                  {/* Country Dropdown */}
-                  <div className="mb-6">
-                    <label htmlFor="country" className="text-sm font-semibold text-[#003366] mb-2 block">
-                      Country / Region
-                    </label>
-                    <div className="relative">
-                      {/* Custom Dropdown Button */}
-                      <button
-                        type="button"
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="w-full h-12 px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] flex items-center justify-between text-left"
+                  {/* Service and Country/Region on same row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+                    <div className="mb-0">
+                      <label htmlFor="service" className="text-[11px] font-semibold text-[#003366] mb-1 block">
+                        Service Interest
+                      </label>
+                      <select 
+                        name="service"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        className="w-full h-7 px-2 py-1 border border-slate-300 rounded-lg bg-white text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] text-xs"
                       >
-                        <div className="flex items-center">
-                          {selectedContact && (
-                            <ReactCountryFlag 
-                              countryCode={selectedContact.flag} 
-                              svg 
-                              style={{ 
-                                width: "1.2em", 
-                                height: "1.2em",
-                                marginRight: "0.75rem"
-                              }} 
-                            />
-                          )}
-                          <span>{selectedCountry}</span>
-                        </div>
-                        <svg
-                          className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                        <option value="">Select a service</option>
+                        <option value="husbanding">Husbanding Services</option>
+                        <option value="fuel">Fuel & Lubricants</option>
+                        <option value="chandlery">Ship Chandlery</option>
+                        <option value="logistics">Port Logistics</option>
+                        <option value="crew">Crew Services</option>
+                        <option value="military">Military Support</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div className="mb-0">
+                      <label htmlFor="country" className="text-[11px] font-semibold text-[#003366] mb-1 block">
+                        Country / Region
+                      </label>
+                      <div className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                          className="w-full h-7 px-2 py-1 border border-slate-300 rounded-lg bg-white text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] flex items-center justify-between text-left text-xs"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-
-                      {/* Dropdown Options */}
-                      {isDropdownOpen && (
-                        <div className="absolute z-50 w-full mt-1 bg-white border border-slate-300 rounded-lg shadow-lg max-h-60 overflow-auto">
-                          {regionalContacts.map((contact, idx) => (
-                            <button
-                              key={contact.region}
-                              type="button"
-                              onClick={() => {
-                                setSelectedCountry(contact.region);
-                                setIsDropdownOpen(false);
-                              }}
-                              className="w-full px-3 py-3 text-left hover:bg-slate-50 flex items-center transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
-                            >
+                          <div className="flex items-center">
+                            {selectedContact && (
                               <ReactCountryFlag 
-                                countryCode={contact.flag} 
+                                countryCode={selectedContact.flag} 
                                 svg 
                                 style={{ 
-                                  width: "1.2em", 
-                                  height: "1.2em",
-                                  marginRight: "0.75rem"
+                                  width: "1em", 
+                                  height: "1em",
+                                  marginRight: "0.5rem"
                                 }} 
                               />
-                              <span className="text-slate-900">{contact.region}</span>
-                            </button>
-                          ))}
-                        </div>
-                      )}
+                            )}
+                            <span>{selectedCountry}</span>
+                          </div>
+                          <svg
+                            className={`w-3 h-3 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {isDropdownOpen && (
+                          <div className="absolute z-50 w-full mt-1 bg-white border border-slate-300 rounded-lg shadow-lg max-h-48 overflow-auto">
+                            {regionalContacts.map((contact, idx) => (
+                              <button
+                                key={contact.region}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedCountry(contact.region);
+                                  setIsDropdownOpen(false);
+                                }}
+                                className="w-full px-2 py-2 text-left hover:bg-slate-50 flex items-center transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg text-xs"
+                              >
+                                <ReactCountryFlag 
+                                  countryCode={contact.flag} 
+                                  svg 
+                                  style={{ 
+                                    width: "1em", 
+                                    height: "1em",
+                                    marginRight: "0.5rem"
+                                  }} 
+                                />
+                                <span className="text-slate-900">{contact.region}</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-semibold text-[#003366]">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+                    <div className="space-y-0.5">
+                      <label htmlFor="email" className="text-[11px] font-semibold text-[#003366]">
                         Email Address *
                       </label>
                       <Input 
@@ -269,11 +288,11 @@ export function ContactSection() {
                         onChange={handleInputChange}
                         placeholder={selectedContact?.email || "your.email@example.com"}
                         required 
-                        className="h-12 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
+                        className="h-7 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] text-xs"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-semibold text-[#003366]">
+                    <div className="space-y-0.5">
+                      <label htmlFor="phone" className="text-[11px] font-semibold text-[#003366]">
                         Phone Number
                       </label>
                       <Input 
@@ -283,34 +302,13 @@ export function ContactSection() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder={selectedContact?.phone || "+1 (555) 123-4567"}
-                        className="h-12 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
+                        className="h-7 bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] text-xs"
                       />
                     </div>
                   </div>
 
-                  <div className="mb-6">
-                    <label htmlFor="service" className="text-sm font-semibold text-[#003366] mb-2 block">
-                      Service Interest
-                    </label>
-                    <select 
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      className="w-full h-12 px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)]"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="husbanding">Husbanding Services</option>
-                      <option value="fuel">Fuel & Lubricants</option>
-                      <option value="chandlery">Ship Chandlery</option>
-                      <option value="logistics">Port Logistics</option>
-                      <option value="crew">Crew Services</option>
-                      <option value="military">Military Support</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div className="mb-8">
-                    <label htmlFor="message" className="text-sm font-semibold text-[#003366] mb-2 block">
+                  <div className="mb-4">
+                    <label htmlFor="message" className="text-[11px] font-semibold text-[#003366] mb-1 block">
                       Message *
                     </label>
                     <Textarea 
@@ -319,26 +317,26 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Please describe your requirements, vessel type, port location, and any specific needs..."
-                      rows={6}
+                      rows={4}
                       required 
-                      className="bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] resize-none"
+                      className="bg-white border-slate-300 text-slate-900 transition-all duration-300 focus:ring-2 focus:ring-[rgb(252,251,248)] focus:border-[rgb(252,251,248)] resize-none text-xs"
                     />
                   </div>
 
                   <Button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#003366] hover:bg-[#002244] text-white h-14 text-lg font-semibold shadow-xl transition-all duration-300 group relative overflow-hidden"
+                    className="w-full bg-[#003366] hover:bg-[#002244] text-white h-10 text-[13px] font-semibold shadow-xl transition-all duration-300 group relative overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       {isSubmitting ? (
                         <>
-                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                          Sending Message...
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                          Sending...
                         </>
                       ) : (
                         <>
-                          <Send className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform duration-300" />
+                          <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
                           Send Message
                         </>
                       )}
