@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import globalConfig from "@/config/globalConfig.json";
 
 interface Location {
   city: string;
@@ -18,64 +19,45 @@ export function InteractiveWorldMap() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
 
-  // All locations with approximate coordinates
+  const { phone: globalPhone, email: globalEmail } = globalConfig.globalContact;
+
+  // All locations with approximate coordinates - Real supported countries
   const locations: Location[] = [
-    // North America - USA
-    { city: "Houston", country: "United States", region: "North America", lat: 29.7604, lng: -95.3698, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "New Orleans", country: "United States", region: "North America", lat: 29.9511, lng: -90.0715, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "Miami", country: "United States", region: "North America", lat: 25.7617, lng: -80.1918, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "Los Angeles", country: "United States", region: "North America", lat: 34.0522, lng: -118.2437, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "New York", country: "United States", region: "North America", lat: 40.7128, lng: -74.0060, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "Seattle", country: "United States", region: "North America", lat: 47.6062, lng: -122.3321, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "Portland", country: "United States", region: "North America", lat: 45.5152, lng: -122.6784, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "San Francisco", country: "United States", region: "North America", lat: 37.7749, lng: -122.4194, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    { city: "Long Beach", country: "United States", region: "North America", lat: 33.7701, lng: -118.1937, phone: "+1 (832) 584-3574", email: "usa@anchorglobal.com", flag: "🇺🇸" },
-    // Canada
-    { city: "Vancouver", country: "Canada", region: "North America", lat: 49.2827, lng: -123.1207, phone: "+1 (604) 555-0100", email: "canada@anchorglobal.com", flag: "🇨🇦" },
-    { city: "Halifax", country: "Canada", region: "North America", lat: 44.6488, lng: -63.5752, phone: "+1 (604) 555-0100", email: "canada@anchorglobal.com", flag: "🇨🇦" },
-    { city: "Montreal", country: "Canada", region: "North America", lat: 45.5017, lng: -73.5673, phone: "+1 (604) 555-0100", email: "canada@anchorglobal.com", flag: "🇨🇦" },
-    { city: "Toronto", country: "Canada", region: "North America", lat: 43.6532, lng: -79.3832, phone: "+1 (604) 555-0100", email: "canada@anchorglobal.com", flag: "🇨🇦" },
+    // North America - USA (East Coast, West Coast & Gulf)
+    { city: "New York", country: "United States", region: "North America", lat: 40.7128, lng: -74.0060, phone: globalPhone, email: globalEmail, flag: "🇺🇸" },
+    { city: "Miami", country: "United States", region: "North America", lat: 25.7617, lng: -80.1918, phone: globalPhone, email: globalEmail, flag: "🇺🇸" },
+    { city: "Los Angeles", country: "United States", region: "North America", lat: 34.0522, lng: -118.2437, phone: globalPhone, email: globalEmail, flag: "🇺🇸" },
+    { city: "Houston", country: "United States", region: "North America", lat: 29.7604, lng: -95.3698, phone: globalPhone, email: globalEmail, flag: "🇺🇸" },
+    { city: "New Orleans", country: "United States", region: "North America", lat: 29.9511, lng: -90.0715, phone: globalPhone, email: globalEmail, flag: "🇺🇸" },
     
     // Central America & Caribbean - Mexico
-    { city: "Veracruz", country: "Mexico", region: "Central America & Caribbean", lat: 19.1738, lng: -96.1342, phone: "+52 229 931 7640", email: "mexico@anchorglobal.com", flag: "🇲🇽" },
-    { city: "Tampico", country: "Mexico", region: "Central America & Caribbean", lat: 22.2331, lng: -97.8611, phone: "+52 229 931 7640", email: "mexico@anchorglobal.com", flag: "🇲🇽" },
-    { city: "Altamira", country: "Mexico", region: "Central America & Caribbean", lat: 22.3932, lng: -97.9375, phone: "+52 229 931 7640", email: "mexico@anchorglobal.com", flag: "🇲🇽" },
-    { city: "Manzanillo", country: "Mexico", region: "Central America & Caribbean", lat: 19.0537, lng: -104.3145, phone: "+52 229 931 7640", email: "mexico@anchorglobal.com", flag: "🇲🇽" },
-    // Panama
-    { city: "Panama City", country: "Panama", region: "Central America & Caribbean", lat: 8.9824, lng: -79.5199, phone: "+507 555-0100", email: "panama@anchorglobal.com", flag: "🇵🇦" },
-    { city: "Colón", country: "Panama", region: "Central America & Caribbean", lat: 9.3592, lng: -79.9009, phone: "+507 555-0100", email: "panama@anchorglobal.com", flag: "🇵🇦" },
-    // Costa Rica
-    { city: "Puerto Limón", country: "Costa Rica", region: "Central America & Caribbean", lat: 9.9908, lng: -83.0333, phone: "+506 555-0100", email: "costarica@anchorglobal.com", flag: "🇨🇷" },
-    // Jamaica
-    { city: "Kingston", country: "Jamaica", region: "Central America & Caribbean", lat: 17.9712, lng: -76.7936, phone: "+1 876 555-0100", email: "jamaica@anchorglobal.com", flag: "🇯🇲" },
+    { city: "Veracruz", country: "Mexico", region: "Central America & Caribbean", lat: 19.1738, lng: -96.1342, phone: globalPhone, email: globalEmail, flag: "🇲🇽" },
+    { city: "Tampico", country: "Mexico", region: "Central America & Caribbean", lat: 22.2331, lng: -97.8611, phone: globalPhone, email: globalEmail, flag: "🇲🇽" },
+    { city: "Manzanillo", country: "Mexico", region: "Central America & Caribbean", lat: 19.0537, lng: -104.3145, phone: globalPhone, email: globalEmail, flag: "🇲🇽" },
+    
     // Trinidad
-    { city: "Port of Spain", country: "Trinidad & Tobago", region: "Central America & Caribbean", lat: 10.6596, lng: -61.5089, phone: "+1 868 555-0100", email: "trinidad@anchorglobal.com", flag: "🇹🇹" },
-    // Dominican Republic
-    { city: "Santo Domingo", country: "Dominican Republic", region: "Central America & Caribbean", lat: 18.4861, lng: -69.9312, phone: "+1 809 555-0100", email: "dominicanrep@anchorglobal.com", flag: "🇩🇴" },
+    { city: "Port of Spain", country: "Trinidad & Tobago", region: "Central America & Caribbean", lat: 10.6596, lng: -61.5089, phone: globalPhone, email: globalEmail, flag: "🇹🇹" },
 
     // South America - Brazil
-    { city: "Santos", country: "Brazil", region: "South America", lat: -23.9608, lng: -46.3332, phone: "+55 21 3614-0168", email: "brasil@anchorglobal.com", flag: "🇧🇷" },
-    { city: "Rio de Janeiro", country: "Brazil", region: "South America", lat: -22.9068, lng: -43.1729, phone: "+55 21 3614-0168", email: "brasil@anchorglobal.com", flag: "🇧🇷" },
-    { city: "Salvador", country: "Brazil", region: "South America", lat: -12.9714, lng: -38.5014, phone: "+55 21 3614-0168", email: "brasil@anchorglobal.com", flag: "🇧🇷" },
-    { city: "Recife", country: "Brazil", region: "South America", lat: -8.0476, lng: -34.8770, phone: "+55 21 3614-0168", email: "brasil@anchorglobal.com", flag: "🇧🇷" },
-    // Colombia
-    { city: "Cartagena", country: "Colombia", region: "South America", lat: 10.3910, lng: -75.4794, phone: "+57 555-0100", email: "colombia@anchorglobal.com", flag: "🇨🇴" },
-    { city: "Barranquilla", country: "Colombia", region: "South America", lat: 10.9639, lng: -74.7964, phone: "+57 555-0100", email: "colombia@anchorglobal.com", flag: "🇨🇴" },
-    { city: "Buenaventura", country: "Colombia", region: "South America", lat: 3.8801, lng: -77.0318, phone: "+57 555-0100", email: "colombia@anchorglobal.com", flag: "🇨🇴" },
-    // Venezuela
-    { city: "La Guaira", country: "Venezuela", region: "South America", lat: 10.6014, lng: -66.9326, phone: "+58 555-0100", email: "venezuela@anchorglobal.com", flag: "🇻🇪" },
-    { city: "Maracaibo", country: "Venezuela", region: "South America", lat: 10.6666, lng: -71.6124, phone: "+58 555-0100", email: "venezuela@anchorglobal.com", flag: "🇻🇪" },
-    // Argentina
-    { city: "Buenos Aires", country: "Argentina", region: "South America", lat: -34.6037, lng: -58.3816, phone: "+54 555-0100", email: "argentina@anchorglobal.com", flag: "🇦🇷" },
-    // Chile
-    { city: "Valparaíso", country: "Chile", region: "South America", lat: -33.0472, lng: -71.6127, phone: "+56 555-0100", email: "chile@anchorglobal.com", flag: "🇨🇱" },
-    { city: "Iquique", country: "Chile", region: "South America", lat: -20.2208, lng: -70.1431, phone: "+56 555-0100", email: "chile@anchorglobal.com", flag: "🇨🇱" },
-    // Peru
-    { city: "Callao", country: "Peru", region: "South America", lat: -12.0565, lng: -77.1181, phone: "+51 555-0100", email: "peru@anchorglobal.com", flag: "🇵🇪" },
-    // Ecuador
-    { city: "Guayaquil", country: "Ecuador", region: "South America", lat: -2.1709, lng: -79.9224, phone: "+593 555-0100", email: "ecuador@anchorglobal.com", flag: "🇪🇨" },
+    { city: "Santos", country: "Brazil", region: "South America", lat: -23.9608, lng: -46.3332, phone: globalPhone, email: globalEmail, flag: "🇧🇷" },
+    { city: "Rio de Janeiro", country: "Brazil", region: "South America", lat: -22.9068, lng: -43.1729, phone: globalPhone, email: globalEmail, flag: "🇧🇷" },
+    { city: "Salvador", country: "Brazil", region: "South America", lat: -12.9714, lng: -38.5014, phone: globalPhone, email: globalEmail, flag: "🇧🇷" },
+    
     // Guyana
-    { city: "Georgetown", country: "Guyana", region: "South America", lat: 6.8013, lng: -58.1551, phone: "+592 555-0100", email: "guyana@anchorglobal.com", flag: "🇬🇾" },
+    { city: "Georgetown", country: "Guyana", region: "South America", lat: 6.8013, lng: -58.1551, phone: globalPhone, email: globalEmail, flag: "🇬🇾" },
+    
+    // Europe - Portugal
+    { city: "Lisbon", country: "Portugal", region: "Europe", lat: 38.7223, lng: -9.1393, phone: globalPhone, email: globalEmail, flag: "🇵🇹" },
+    { city: "Porto", country: "Portugal", region: "Europe", lat: 41.1579, lng: -8.6291, phone: globalPhone, email: globalEmail, flag: "🇵🇹" },
+    
+    // Europe - Spain
+    { city: "Barcelona", country: "Spain", region: "Europe", lat: 41.3851, lng: 2.1734, phone: globalPhone, email: globalEmail, flag: "🇪🇸" },
+    { city: "Valencia", country: "Spain", region: "Europe", lat: 39.4699, lng: -0.3763, phone: globalPhone, email: globalEmail, flag: "🇪🇸" },
+    { city: "Bilbao", country: "Spain", region: "Europe", lat: 43.2627, lng: -2.9253, phone: globalPhone, email: globalEmail, flag: "🇪🇸" },
+    
+    // Middle East - Lebanon
+    { city: "Beirut", country: "Lebanon", region: "Middle East", lat: 33.8938, lng: 35.5018, phone: globalPhone, email: globalEmail, flag: "🇱🇧" },
+    { city: "Tripoli", country: "Lebanon", region: "Middle East", lat: 34.4367, lng: 35.8498, phone: globalPhone, email: globalEmail, flag: "🇱🇧" },
   ];
 
   // Convert lat/lng to SVG coordinates using calibrated Mercator projection
