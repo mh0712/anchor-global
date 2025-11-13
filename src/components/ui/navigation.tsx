@@ -20,11 +20,12 @@ export function Navigation({ className }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentCountry, setCurrentCountry] = useState("usa");
 
-  const countries = [
-    { code: "usa", name: "United States", flag: "🇺🇸" },
-    { code: "mx", name: "México", flag: "🇲🇽" },
-    { code: "br", name: "Brasil", flag: "🇧🇷" },
+  const languages = [
+    { code: "en", name: "English", flag: "/flags/us.svg" },
+    { code: "es", name: "Español", flag: "/flags/es.svg" },
+    { code: "pt", name: "Português", flag: "/flags/br.svg" },
   ];
+  const [currentLang, setCurrentLang] = useState(languages[0].code);
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -74,24 +75,61 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Country Selector & Mobile Menu */}
           <div className="flex items-center space-x-3">
-            {/* Country Selector */}
+            {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300 text-xs">
+                <Button variant="ghost" size="sm" className="text-white bg-[#003366] border border-[rgb(252,251,248)]/40 rounded-full px-3 py-1 flex items-center hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300 text-xs">
                   <Globe className="w-3 h-3 mr-1" />
-                  {countries.find(c => c.code === currentCountry)?.flag}
+                  <span className="mr-1">
+                    <img
+                      src={languages.find(l => l.code === currentLang)?.flag || ""}
+                      alt={languages.find(l => l.code === currentLang)?.name + " flag"}
+                      width={20}
+                      height={14}
+                      style={{ display: 'inline-block', verticalAlign: 'middle', borderRadius: '2px', border: '1px solid #fff' }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        const fallback = document.createElement('span');
+                        fallback.style.display = 'inline-block';
+                        fallback.style.width = '20px';
+                        fallback.style.height = '14px';
+                        fallback.style.background = '#b22234';
+                        fallback.style.border = '1px solid #fff';
+                        e.currentTarget.parentNode?.appendChild(fallback);
+                      }}
+                    />
+                  </span>
+                  <span className="font-semibold">{languages.find(l => l.code === currentLang)?.name}</span>
                   <ChevronDown className="w-4 h-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-40">
-                {countries.map((country) => (
+              <DropdownMenuContent align="end" className="w-44 bg-[#003366] border border-[rgb(252,251,248)]/40 rounded-xl shadow-xl">
+                {languages.map((lang) => (
                   <DropdownMenuItem
-                    key={country.code}
-                    onClick={() => setCurrentCountry(country.code)}
-                    className="cursor-pointer text-white hover:bg-[rgb(1,61,110)] hover:text-[rgb(252,251,248)] transition-colors duration-200"
+                    key={lang.code}
+                    onClick={() => setCurrentLang(lang.code)}
+                    className={`cursor-pointer flex items-center px-3 py-2 text-white hover:bg-[rgb(252,251,248)]/10 transition-colors duration-200 rounded-lg ${currentLang === lang.code ? 'bg-[rgb(252,251,248)]/10 font-bold' : ''}`}
                   >
-                    <span className="mr-2">{country.flag}</span>
-                    {country.name}
+                    <span className="mr-2">
+                      <img
+                        src={lang.flag}
+                        alt={lang.name + " flag"}
+                        width={20}
+                        height={14}
+                        style={{ display: 'inline-block', verticalAlign: 'middle', borderRadius: '2px', border: '1px solid #fff' }}
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          const fallback = document.createElement('span');
+                          fallback.style.display = 'inline-block';
+                          fallback.style.width = '20px';
+                          fallback.style.height = '14px';
+                          fallback.style.background = '#b22234';
+                          fallback.style.border = '1px solid #fff';
+                          e.currentTarget.parentNode?.appendChild(fallback);
+                        }}
+                      />
+                    </span>
+                    <span>{lang.name}</span>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
