@@ -47,24 +47,24 @@ export function Navigation({ className }: NavigationProps) {
   return (
     <nav className={cn("fixed top-0 left-0 right-0 z-50 bg-[#003366]/95 backdrop-blur-md border-b border-[rgb(252,251,248)]/20 shadow-lg", className)}>
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <div className="w-12 h-12 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl overflow-hidden">
               <Image src="/Picture1.png" alt="Company Logo" width={40} height={40} />
             </div>
-            <span className="text-white font-bold text-2xl tracking-wide">
+            <span className="text-white font-bold text-base tracking-wide">
               ANCHOR GLOBAL
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-10">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => smoothScroll(item.href)}
-                className="text-white hover:text-[rgb(252,251,248)] transition-all duration-300 font-medium text-base relative group"
+                className="text-white hover:text-[rgb(252,251,248)] transition-all duration-300 font-medium text-sm relative group"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[rgb(252,251,248)] transition-all duration-300 group-hover:w-full"></span>
@@ -73,12 +73,12 @@ export function Navigation({ className }: NavigationProps) {
           </div>
 
           {/* Country Selector & Mobile Menu */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {/* Country Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300">
-                  <Globe className="w-4 h-4 mr-2" />
+                <Button variant="ghost" size="sm" className="text-white hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300 text-xs">
+                  <Globe className="w-3 h-3 mr-1" />
                   {countries.find(c => c.code === currentCountry)?.flag}
                   <ChevronDown className="w-4 h-4 ml-2" />
                 </Button>

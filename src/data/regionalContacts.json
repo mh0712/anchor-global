@@ -1,0 +1,26 @@
+[
+  {
+    "region": "United States",
+    "flag": "US",
+    "phone": "+1 (832) 584-3574",
+    "email": "US_CONTACT_EMAIL",
+    "address": "Houston, Texas",
+    "timezone": "CST (UTC-6)"
+  },
+  {
+    "region": "Mexico",
+    "flag": "MX",
+    "phone": "+52 229 931 7640",
+    "email": "MEXICO_CONTACT_EMAIL",
+    "address": "Veracruz, Mexico",
+    "timezone": "CST (UTC-6)"
+  },
+  {
+    "region": "Brazil",
+    "flag": "BR",
+    "phone": "+55 21 3614-0168",
+    "email": "BRAZIL_CONTACT_EMAIL",
+    "address": "Rio de Janeiro, Brazil",
+    "timezone": "BRT (UTC-3)"
+  }
+]

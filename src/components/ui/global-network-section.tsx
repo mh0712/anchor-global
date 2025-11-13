@@ -168,120 +168,25 @@ export function GlobalNetworkSection() {
   ];
 
   return (
-    <section id="network" className="py-24 md:py-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Background Images */}
-      <div className="absolute top-0 right-0 w-1/3 h-96 opacity-10">
-        <Image 
-          src="/src11.jpg" 
-          alt="Global network" 
-          fill 
-          className="object-cover" 
-        />
-      </div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-96 opacity-10">
-        <Image 
-          src="/src12.jpg" 
-          alt="Port operations" 
-          fill 
-          className="object-cover" 
-        />
-      </div>
-      
+    <section id="network" className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-4 py-2">
+        <div className="text-center mb-12">
+          <Badge className="mb-2 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-2 py-1 text-xs">
             Global Presence
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-6">
+          <h2 className="text-xl md:text-2xl font-bold text-[#003366] mb-3">
             Our Americas-Wide Network
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            From Canada to Argentina, we provide comprehensive maritime services throughout all of North, Central, and South America. 
-            With presence in 15+ countries and 75+ major ports, Anchor Global delivers seamless support wherever your operations take you.
+          <p className="text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            We provide comprehensive maritime services for vessels worldwide. 
+            With operations in 15+ countries and 75+ major ports, Anchor Global delivers seamless support wherever your operations take you.
           </p>
         </div>
 
         {/* Interactive World Map */}
-        <div className="mb-20">
+        <div className="mb-12">
           <InteractiveWorldMap />
-        </div>
-
-        {/* Regional Breakdown */}
-        <div className="space-y-12">
-          {regions.map((region, regionIndex) => (
-            <div key={regionIndex}>
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center">
-                <MapPin className="w-6 h-6 text-accent mr-3" />
-                {region.region}
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {region.countries.map((country, countryIndex) => (
-                  <Card key={countryIndex} className="hover:shadow-maritime transition-all duration-300 border-border/50 hover:border-primary/30 card-professional">
-                    <CardHeader className="p-6 pb-4 space-y-0">
-                      <CardTitle className="flex items-center text-lg mb-3">
-                        <span className="text-2xl mr-3">{country.flag}</span>
-                        {country.name}
-                      </CardTitle>
-                      <CardDescription>
-                        Strategic port locations and comprehensive services
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="px-6 pb-6 pt-2">
-                      <div className="space-y-5">
-                        {/* Cities */}
-                        <div>
-                          <h5 className="font-semibold text-sm text-muted-foreground mb-3">Key Ports</h5>
-                          <div className="flex flex-wrap gap-2">
-                            {country.cities.map((city, cityIndex) => (
-                              <Badge key={cityIndex} variant="secondary" className="text-xs px-2.5 py-1">
-                                {city}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Contact Info */}
-                        <div className="pt-3 border-t border-border/50 space-y-3">
-                          <div className="flex items-center text-sm text-muted-foreground">
-                            <Phone className="w-3.5 h-3.5 mr-3 flex-shrink-0" />
-                            <span>{country.contact.phone}</span>
-                          </div>
-                          <div className="flex items-center text-sm text-muted-foreground">
-                            <Mail className="w-3.5 h-3.5 mr-3 flex-shrink-0" />
-                            <span className="break-all">{country.contact.email}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Summary Stats */}
-        <div className="mt-16 bg-gradient-maritime rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">15+</div>
-              <div className="text-primary-foreground/80">Countries</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">75+</div>
-              <div className="text-primary-foreground/80">Major Ports</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">3</div>
-              <div className="text-primary-foreground/80">Regions</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">24/7</div>
-              <div className="text-primary-foreground/80">Global Support</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

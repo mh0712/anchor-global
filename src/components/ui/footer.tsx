@@ -58,26 +58,26 @@ export function Footer() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#001f3f] to-[#003366]/90" />
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-6 lg:px-8 py-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Company Info */}
           <div className="lg:col-span-1 animate-fade-in-up">
-            <div className="flex items-center space-x-3 mb-8">
-              <div className="w-12 h-12 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl">
-                <Anchor className="w-6 h-6 text-[#003366]" />
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-8 h-8 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl">
+                <Anchor className="w-4 h-4 text-[#003366]" />
               </div>
-              <span className="font-bold text-2xl">ANCHOR GLOBAL</span>
+              <span className="font-bold text-base">ANCHOR GLOBAL</span>
             </div>
-            <p className="text-white/80 mb-8 leading-relaxed text-base">
+            <p className="text-white/80 mb-4 leading-relaxed text-xs">
               22 years of excellence in maritime services. Providing comprehensive 
-              husbanding solutions throughout the Americas - from Canada to Argentina.
+              husbanding solutions for vessels worldwide, with a presence across the Americas, Europe, and the Middle East.
             </p>
-            <div className="space-y-4">
-              <div className="flex items-center text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
-                <Phone className="w-4 h-4 mr-3" />
+            <div className="space-y-2">
+              <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
+                <Phone className="w-3 h-3 mr-2" />
                 <span className="font-medium">+1 (832) 584-3574</span>
               </div>
-              <div className="flex items-center text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
+              <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
                 <Mail className="w-4 h-4 mr-3" />
                 <span>info@anchorglobal.com</span>
               </div>
