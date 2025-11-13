@@ -63,8 +63,8 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1 animate-fade-in-up">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl">
-                <Anchor className="w-4 h-4 text-[#003366]" />
+              <div className="w-9 h-9 bg-[rgb(252,251,248)] rounded-full flex items-center justify-center shadow-xl overflow-hidden">
+                <Image src="/Picture1.png" alt="Company Logo" width={60} height={60} />
               </div>
               <span className="font-bold text-base">ANCHOR GLOBAL</span>
             </div>
