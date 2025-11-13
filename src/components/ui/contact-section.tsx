@@ -122,9 +122,9 @@ export function ContactSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-slate-50/80 to-white/90" />
 
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col lg:flex-row items-start gap-4">
           {/* Left: Header/Intro */}
-          <div className="w-full lg:w-1/2 mb-4 lg:mb-0 animate-fade-in-up">
+          <div className="w-full lg:w-1/2 mb-4 lg:mb-0 animate-fade-in-up pl-2 lg:pl-6">
             <Badge className="mb-1 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-1.5 py-0.5 text-[10px]">
               Get In Touch
             </Badge>

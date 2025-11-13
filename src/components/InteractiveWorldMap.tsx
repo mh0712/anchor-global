@@ -473,22 +473,6 @@ export function InteractiveWorldMap() {
         </div>
       )}
 
-      {/* Legend */}
-      <div className="mt-8 flex flex-wrap gap-6 justify-center">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#003366]"></div>
-          <span className="text-sm text-slate-600">North America</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#004488]"></div>
-          <span className="text-sm text-slate-600">Central America & Caribbean</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#0055aa]"></div>
-          <span className="text-sm text-slate-600">South America</span>
-        </div>
-      </div>
-
       {/* Inline styles for animations */}
       <style jsx>{`
         @keyframes fadeInUp {
