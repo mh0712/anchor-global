@@ -13,6 +13,7 @@ import {
   Globe,
   ChevronUp
 } from "lucide-react";
+import ReactCountryFlag from "react-country-flag";
 import globalConfig from "@/config/globalConfig.json";
 
 
@@ -40,12 +41,14 @@ export function Footer() {
   ];
 
   const regions = [
-    { name: "United States", flag: "🇺🇸" },
-    { name: "Mexico", flag: "🇲🇽" },
-    { name: "Brazil", flag: "🇧🇷" },
-    { name: "Canada", flag: "🇨🇦" },
-    { name: "Egypt", flag: "🇪🇬" },
-    { name: "Other Locations", flag: "🌍" }
+    { name: "United States", code: "US" },
+    { name: "Mexico", code: "MX" },
+    { name: "Trinidad & Tobago", code: "TT" },
+    { name: "Brazil", code: "BR" },
+    { name: "Guyana", code: "GY" },
+    { name: "Portugal", code: "PT" },
+    { name: "Spain", code: "ES" },
+    { name: "Lebanon", code: "LB" }
   ];
 
   return (
@@ -116,7 +119,7 @@ export function Footer() {
             <ul className="space-y-4">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className="text-primary-foreground/80 text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
+                  <span className="text-primary-foreground/80 text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200">
                     {service}
                   </span>
                 </li>
@@ -130,30 +133,21 @@ export function Footer() {
             <div className="space-y-4">
               {regions.map((region, index) => (
                 <div key={index} className="flex items-center text-sm">
-                  <span className="mr-3">{region.flag}</span>
+                  <span className="mr-3">
+                    {region.code ? (
+                      <ReactCountryFlag
+                        countryCode={region.code}
+                        svg
+                        style={{ width: "1.2em", height: "1.2em", verticalAlign: "middle" }}
+                        title={region.name}
+                      />
+                    ) : (
+                      <span role="img" aria-label="Other Locations">🌍</span>
+                    )}
+                  </span>
                   <span className="text-primary-foreground/80">{region.name}</span>
                 </div>
               ))}
-            </div>
-            
-            <div className="mt-8">
-              <h5 className="font-medium mb-4">Connect With Us</h5>
-              <div className="flex space-x-3">
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-primary-foreground hover:text-accent hover:bg-primary-hover p-3"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-primary-foreground hover:text-accent hover:bg-primary-hover p-3"
-                >
-                  <Globe className="w-5 h-5" />
-                </Button>
-              </div>
             </div>
           </div>
         </div>
