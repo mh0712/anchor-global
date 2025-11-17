@@ -64,7 +64,20 @@ export const en = {
       "ISO-certified quality management"
     ],
     qualityDescription: "We work with carefully selected teams and products, ensuring that every service we provide meets the highest standards. Our comprehensive approach covers everything from port agency services to complete ship supply solutions, all backed by our deep understanding of local regulations and international maritime standards.",
-    learnMoreButton: "Learn More About Us"
+    learnMoreButton: "Learn More About Us",
+    extendedDescription: "husbanding services worldwide. From the northern ports of Canada to the southern coasts of Argentina, and across major maritime hubs in Europe and the Middle East, our extensive experience in the maritime industry—combined with our commitment to quality and efficiency—makes us the trusted partner for vessel operators around the globe.",
+    imageSection: {
+      title: "Professional Maritime Services",
+      subtitle: "Supporting all vessel types across the Americas, Europe, and Middle East"
+    },
+    keyAchievements: "Key Achievements"
+  },
+
+  // Interactive World Map
+  worldMap: {
+    phone: "Phone",
+    email: "Email",
+    viewOnMaps: "View on Google Maps"
   },
 
   // Services Section

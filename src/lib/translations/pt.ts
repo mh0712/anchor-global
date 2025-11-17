@@ -66,7 +66,20 @@ export const pt: TranslationKeys = {
       "Gestão de qualidade certificada ISO"
     ],
     qualityDescription: "Trabalhamos com equipes e produtos cuidadosamente selecionados, garantindo que cada serviço que fornecemos atenda aos mais altos padrões. Nossa abordagem abrangente cobre tudo, desde serviços de agência portuária até soluções completas de fornecimento de navios, tudo apoiado por nossa profunda compreensão de regulamentações locais e padrões marítimos internacionais.",
-    learnMoreButton: "Saiba Mais Sobre Nós"
+    learnMoreButton: "Saiba Mais Sobre Nós",
+    extendedDescription: "serviços de agenciamento mundial. Dos portos do norte do Canadá até as costas do sul da Argentina, e através dos principais centros marítimos da Europa e Oriente Médio, nossa ampla experiência na indústria marítima—combinada com nosso compromisso com qualidade e eficiência—nos torna o parceiro confiável para operadores de embarcações em todo o mundo.",
+    imageSection: {
+      title: "Serviços Marítimos Profissionais",
+      subtitle: "Apoiando todos os tipos de embarcações nas Américas, Europa e Oriente Médio"
+    },
+    keyAchievements: "Principais Conquistas"
+  },
+
+  // Interactive World Map
+  worldMap: {
+    phone: "Telefone",
+    email: "Email",
+    viewOnMaps: "Ver no Google Maps"
   },
 
   // Services Section

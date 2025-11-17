@@ -77,8 +77,7 @@ export function AboutSection() {
                 {t.about.title}
               </h2>
               <p className="text-sm text-slate-700 mb-3 leading-relaxed">
-                {t.about.description} 
-                husbanding services worldwide. From the northern ports of Canada to the southern coasts of Argentina, and across major maritime hubs in Europe and the Middle East, our extensive experience in the maritime industry—combined with our commitment to quality and efficiency—makes us the trusted partner for vessel operators around the globe.
+                {t.about.description} {t.about.extendedDescription}
               </p>
               
               <p className="text-xs text-slate-600 mb-4">
@@ -110,7 +109,7 @@ export function AboutSection() {
                 <CardContent className="p-3 md:p-4">
                   <h3 className="text-sm md:text-base font-bold text-[#003366] mb-2 flex items-center">
                     <Award className="w-4 h-4 text-[rgb(252,251,248)] mr-2" />
-                    Key Achievements
+                    {t.about.keyAchievements}
                   </h3>
                   <div className="space-y-1.5">
                     {achievements.map((achievement, index) => (
@@ -145,10 +144,10 @@ export function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#003366]/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Professional Maritime Services
+                  {t.about.imageSection.title}
                 </h3>
                 <p className="text-white/90 text-sm">
-                  Supporting all vessel types across the Americas, Europe, and Middle East
+                  {t.about.imageSection.subtitle}
                 </p>
               </div>
             </div>
