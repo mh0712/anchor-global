@@ -10,23 +10,19 @@ import { Input } from "@/components/ui/input";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Phone, 
   Mail, 
   MapPin, 
-  Clock,
   Send,
   Globe as LucideGlobe,
-  CheckCircle,
-  MessageSquare,
   ArrowRight
 } from "lucide-react";
 
 // Custom Globe icon for PhoneInput with placeholder styling and 2px higher
-const Globe = (props: any) => (
+const Globe = (props: React.SVGProps<SVGSVGElement>) => (
   <LucideGlobe
     {...props}
     color="#94a3b8"
@@ -119,7 +115,7 @@ export function ContactSection() {
   };
 
   const validateForm = () => {
-    const errors: any = {};
+    const errors = { ...formErrors };
     const nameError = getNameOrCompanyError(formData.name, 'Full name');
     if (nameError) errors.name = nameError;
     const companyError = formData.company ? getNameOrCompanyError(formData.company, 'Company') : '';
@@ -134,7 +130,7 @@ export function ContactSection() {
       errors.message = t.contact.validation.messageMinLength;
     }
     setFormErrors(errors);
-    return Object.keys(errors).length === 0;
+    return Object.keys(errors).length === 0 || Object.values(errors).every(error => !error);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -181,7 +177,7 @@ export function ContactSection() {
           duration: 5000,
         });
       }
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: t.contact.error.generic,
@@ -211,11 +207,6 @@ export function ContactSection() {
 
   // Get selected contact info
   const selectedContact = regionalContacts.find(c => c.region === selectedCountry);
-
-  const globalContact = {
-    email: process.env.NEXT_PUBLIC_GLOBAL_CONTACT_EMAIL || "info@anchorglobal.com",
-    phone: process.env.NEXT_PUBLIC_GLOBAL_CONTACT_PHONE || "(727) 488-7351"
-  };
 
   return (
     <section id="contact" className="pt-0 pb-8 md:pt-0 md:pb-10 bg-slate-50 relative overflow-hidden">
@@ -357,7 +348,7 @@ export function ContactSection() {
                         </button>
                         {isDropdownOpen && (
                           <div className="absolute z-50 w-full mt-1 bg-white border border-slate-300 rounded-lg shadow-lg max-h-48 overflow-auto">
-                            {regionalContacts.map((contact, idx) => (
+                            {regionalContacts.map((contact) => (
                               <button
                                 key={contact.region}
                                 type="button"

@@ -5,12 +5,9 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { 
-  Anchor, 
   Phone, 
   Mail, 
   MapPin,
-  Linkedin,
-  Globe,
   ChevronUp
 } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";

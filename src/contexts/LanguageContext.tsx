@@ -53,6 +53,10 @@ export function useLanguage() {
 }
 
 // Utility function to get nested translation values
-export function getNestedTranslation(obj: any, path: string): string {
-  return path.split('.').reduce((current, key) => current?.[key], obj) || path;
+export function getNestedTranslation(obj: Record<string, unknown>, path: string): string {
+  return path.split('.').reduce((current: unknown, key) => {
+    return current && typeof current === 'object' && key in current 
+      ? (current as Record<string, unknown>)[key] 
+      : undefined;
+  }, obj) as string || path;
 }
