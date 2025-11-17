@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import globalConfig from "@/config/globalConfig.json";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Location {
   city: string;
@@ -16,6 +17,7 @@ interface Location {
 }
 
 export function InteractiveWorldMap() {
+  const { t } = useLanguage();
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
 
@@ -442,7 +444,7 @@ export function InteractiveWorldMap() {
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-[#003366] mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs text-slate-500 mb-1">Phone</p>
+                    <p className="text-xs text-slate-500 mb-1">{t.worldMap.phone}</p>
                     <a href={`tel:${selectedLocation.phone}`} className="text-slate-900 hover:text-[#003366] transition-colors">
                       {selectedLocation.phone}
                     </a>
@@ -451,7 +453,7 @@ export function InteractiveWorldMap() {
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-[#003366] mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs text-slate-500 mb-1">Email</p>
+                    <p className="text-xs text-slate-500 mb-1">{t.worldMap.email}</p>
                     <a href={`mailto:${selectedLocation.email}`} className="text-slate-900 hover:text-[#003366] transition-colors break-all">
                       {selectedLocation.email}
                     </a>
@@ -465,7 +467,7 @@ export function InteractiveWorldMap() {
                 className="w-full bg-gradient-to-r from-[#003366] to-[#004488] hover:from-[#002244] hover:to-[#003366] text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <MapPin className="w-5 h-5" />
-                View on Google Maps
+                {t.worldMap.viewOnMaps}
                 <ExternalLink className="w-4 h-4" />
               </button>
             </div>
