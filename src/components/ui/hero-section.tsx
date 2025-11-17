@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Anchor, Phone } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const smoothScroll = (targetId: string) => {
   const element = document.querySelector(targetId);
@@ -15,6 +16,8 @@ const smoothScroll = (targetId: string) => {
 };
 
 export function HeroSection() {
+  const { t } = useLanguage();
+  
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-14 pb-6">
       {/* Background Image */}
@@ -63,23 +66,22 @@ export function HeroSection() {
           </div>
           
           {/* Main Heading */}
+          {/* Main Heading */}
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
-            Anchor Global
+            {t.hero.title}
             <span className="block text-[rgb(252,251,248)] mt-1">
-              Maritime Excellence
+              {t.hero.subtitle}
             </span>
           </h1>
           
           {/* Subtitle */}
           <p className="text-base md:text-lg text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed font-light">
-            <strong className="font-bold">22 years</strong> of experience providing comprehensive husbanding services throughout 
-            <strong className="text-[rgb(252,251,248)] font-bold"> North America, Central America, South America, Caribbean, , Europe, and Middle East</strong>
+            {t.hero.description}
           </p>
           
           {/* Description */}
           <p className="text-sm md:text-base text-white/80 mb-6 max-w-xl mx-auto">
-            Supporting all vessel types: Tankers, Cruise Ships, Supply Boats, and Military Vessels 
-            with the highest efficiency and quality standards
+            {t.hero.vesselDescription}
           </p>
           
           {/* CTA Buttons */}
@@ -89,8 +91,8 @@ export function HeroSection() {
               onClick={() => smoothScroll('#services')}
               className="bg-[rgb(252,251,248)] hover:bg-[rgb(242,241,238)] text-[#003366] px-6 py-3 text-sm font-bold shadow-2xl transition-all duration-300 hover:scale-105 group"
             >
-              <span className="flex items-center">
-                Explore Our Services
+                            <span className="flex items-center">
+                {t.hero.ctaButton}
                 <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
             </Button>
@@ -102,17 +104,17 @@ export function HeroSection() {
               className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-[rgb(252,251,248)] px-6 py-3 text-sm font-semibold backdrop-blur-sm transition-all duration-300 hover:scale-105"
             >
               <Phone className="w-3 h-3 mr-2" />
-              Contact Us Today
+              {t.navigation.contact}
             </Button>
           </div>
           
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8 pt-4 border-t border-white/20">
             {[
-              { value: "22+", label: "Years Experience" },
-              { value: "15+", label: "Countries" },
-              { value: "75+", label: "Major Ports" },
-              { value: "24/7", label: "Support" }
+              { value: "22+", label: t.hero.stats.years },
+              { value: "15+", label: t.hero.stats.countries },
+              { value: "75+", label: t.hero.stats.majorPorts },
+              { value: "24/7", label: t.hero.stats.support }
             ].map((stat, index) => (
               <div key={index} className="text-center group hover:scale-110 transition-transform duration-300">
                 <div className="text-xl md:text-2xl font-bold text-[rgb(252,251,248)] mb-1">{stat.value}</div>

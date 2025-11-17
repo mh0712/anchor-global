@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Globe, Menu, X, Anchor } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Language } from "@/lib/translations";
 
 interface NavigationProps {
   className?: string;
@@ -18,20 +20,20 @@ interface NavigationProps {
 
 export function Navigation({ className }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentCountry, setCurrentCountry] = useState("usa");
+  const { language, setLanguage, t } = useLanguage();
 
   const countries = [
-    { code: "usa", name: "United States", flag: "🇺🇸" },
-    { code: "mx", name: "México", flag: "🇲🇽" },
-    { code: "br", name: "Brasil", flag: "🇧🇷" },
+    { code: "en" as Language, name: "United States", flag: "🇺🇸", locale: "usa" },
+    { code: "es" as Language, name: "México", flag: "🇲🇽", locale: "mx" },
+    { code: "pt" as Language, name: "Brasil", flag: "🇧🇷", locale: "br" },
   ];
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Global Network", href: "#network" },
-    { name: "Contact", href: "#contact" },
+    { name: t.navigation.home, href: "#home" },
+    { name: t.navigation.about, href: "#about" },
+    { name: t.navigation.services, href: "#services" },
+    { name: t.navigation.network, href: "#network" },
+    { name: t.navigation.contact, href: "#contact" },
   ];
 
   const smoothScroll = (targetId: string) => {
@@ -43,6 +45,12 @@ export function Navigation({ className }: NavigationProps) {
       });
     }
   };
+
+  const handleLanguageChange = (newLanguage: Language) => {
+    setLanguage(newLanguage);
+  };
+
+  const currentCountryData = countries.find(c => c.code === language);
 
   return (
     <nav className={cn("fixed top-0 left-0 right-0 z-50 bg-[#003366]/95 backdrop-blur-md border-b border-[rgb(252,251,248)]/20 shadow-lg", className)}>
@@ -79,7 +87,7 @@ export function Navigation({ className }: NavigationProps) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="text-white hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300 text-xs">
                   <Globe className="w-3 h-3 mr-1" />
-                  {countries.find(c => c.code === currentCountry)?.flag}
+                  {currentCountryData?.flag}
                   <ChevronDown className="w-4 h-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
@@ -87,11 +95,11 @@ export function Navigation({ className }: NavigationProps) {
                 {countries.map((country) => (
                   <DropdownMenuItem
                     key={country.code}
-                    onClick={() => setCurrentCountry(country.code)}
+                    onClick={() => handleLanguageChange(country.code)}
                     className="cursor-pointer text-white hover:bg-[rgb(1,61,110)] hover:text-[rgb(252,251,248)] transition-colors duration-200"
                   >
                     <span className="mr-2">{country.flag}</span>
-                    {country.name}
+                    {t.countries[country.locale as keyof typeof t.countries]}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
