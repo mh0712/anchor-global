@@ -66,7 +66,20 @@ export const es: TranslationKeys = {
       "Gestión de calidad certificada ISO"
     ],
     qualityDescription: "Trabajamos con equipos y productos cuidadosamente seleccionados, asegurando que cada servicio que brindamos cumpla con los más altos estándares. Nuestro enfoque integral cubre todo, desde servicios de agencia portuaria hasta soluciones completas de suministro de buques, todo respaldado por nuestra profunda comprensión de las regulaciones locales y estándares marítimos internacionales.",
-    learnMoreButton: "Saber Más Sobre Nosotros"
+    learnMoreButton: "Saber Más Sobre Nosotros",
+    extendedDescription: "servicios de consignatario en todo el mundo. Desde los puertos del norte de Canadá hasta las costas del sur de Argentina, y a través de los principales centros marítimos de Europa y Medio Oriente, nuestra amplia experiencia en la industria marítima—combinada con nuestro compromiso con la calidad y eficiencia—nos convierte en el socio de confianza para operadores de buques en todo el mundo.",
+    imageSection: {
+      title: "Servicios Marítimos Profesionales",
+      subtitle: "Apoyando todos los tipos de embarcaciones en las Américas, Europa y Medio Oriente"
+    },
+    keyAchievements: "Logros Clave"
+  },
+
+  // Interactive World Map
+  worldMap: {
+    phone: "Teléfono",
+    email: "Correo Electrónico",
+    viewOnMaps: "Ver en Google Maps"
   },
 
   // Services Section
