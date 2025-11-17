@@ -1,11 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { InteractiveWorldMap } from "@/components/InteractiveWorldMap";
 import globalConfig from "@/config/globalConfig.json";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function GlobalNetworkSection() {
+  const { t } = useLanguage();
   const { phone: globalPhone, email: globalEmail } = globalConfig.globalContact;
   const regions = [
     {
@@ -129,14 +133,13 @@ export function GlobalNetworkSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <Badge className="mb-2 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-2 py-1 text-xs">
-            Global Presence
+            {t.network.badge}
           </Badge>
           <h2 className="text-xl md:text-2xl font-bold text-[#003366] mb-3">
-            Our Global Network
+            {t.network.title}
           </h2>
           <p className="text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            We provide comprehensive maritime services for vessels worldwide. 
-            With operations in 8 countries across the Americas, Europe, and Middle East, Anchor Global delivers seamless support wherever your operations take you.
+            {t.network.description}
           </p>
         </div>
 

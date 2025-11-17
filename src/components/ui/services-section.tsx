@@ -11,76 +11,79 @@ import {
   Users, 
   Shield
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function ServicesSection() {
+  const { t } = useLanguage();
+  
   const services = [
     {
       icon: Ship,
-      title: "Husbanding Services",
-      description: "Comprehensive port agency services for all vessel types including coordination with port authorities, customs clearance, and crew assistance.",
-      features: ["Port Agency", "Customs Clearance", "Crew Services", "Documentation"]
+      title: t.services.hubanding.title,
+      description: t.services.hubanding.description,
+      features: t.services.hubandingFeatures
     },
     {
       icon: Fuel,
-      title: "Fuel & Lubricants",
-      description: "Quality marine fuel supply and lubricants delivery with competitive pricing and certified products for optimal vessel performance.",
-      features: ["Marine Gas Oil", "Heavy Fuel Oil", "Lubricants", "Bunker Services"]
+      title: t.services.fuel.title,
+      description: t.services.fuel.description,
+      features: t.services.fuel.features
     },
     {
       icon: ShoppingCart,
-      title: "Ship Chandlery",
-      description: "Complete ship supply services including provisions, deck equipment, engine spares, and safety equipment from trusted suppliers.",
-      features: ["Provisions", "Deck Supplies", "Engine Parts", "Safety Equipment"]
+      title: t.services.chandler.title,
+      description: t.services.chandler.description,
+      features: t.services.chandlerFeatures
     },
     {
       icon: Anchor,
-      title: "Port Logistics",
-      description: "Efficient cargo handling, warehousing, and transportation services ensuring smooth operations for all types of maritime cargo.",
-      features: ["Cargo Handling", "Warehousing", "Transportation", "Customs Support"]
+      title: t.services.logistics.title,
+      description: t.services.logistics.description,
+      features: t.services.logisticsFeatures
     },
     {
       icon: Users,
-      title: "Crew Services",
-      description: "Complete crew support including shore leave arrangements, medical assistance, repatriation services, and accommodation.",
-      features: ["Shore Leave", "Medical Care", "Repatriation", "Accommodation"]
+      title: t.services.crew.title,
+      description: t.services.crew.description,
+      features: t.services.crewFeatures
     },
     {
       icon: Shield,
-      title: "Military Support",
-      description: "Specialized services for military vessels with security clearances and expertise in handling sensitive military logistics.",
-      features: ["Security Clearance", "Specialized Handling", "Confidential Logistics", "Military Protocols"]
+      title: t.services.military.title,
+      description: t.services.military.description,
+      features: t.services.military.features
     }
   ];
 
   const vesselTypes = [
     { 
-      name: "Tankers", 
-      description: "Oil, chemical, and LNG tankers",
+      name: t.services.vesselTypes.tankers.name, 
+      description: t.services.vesselTypes.tankers.description,
       image: "/tanker-ships.jpg"
     },
     { 
-      name: "Cruise Ships", 
-      description: "Passenger and cruise vessels",
+      name: t.services.vesselTypes.cruiseShips.name, 
+      description: t.services.vesselTypes.cruiseShips.description,
       image: "/cruise-ships.jpg"
     },
     { 
-      name: "Supply Boats", 
-      description: "Offshore support vessels",
+      name: t.services.vesselTypes.supplyBoats.name, 
+      description: t.services.vesselTypes.supplyBoats.description,
       image: "/supply-boats.jpg"
     },
     { 
-      name: "Military Vessels", 
-      description: "Naval and coast guard ships",
+      name: t.services.vesselTypes.militaryVessels.name, 
+      description: t.services.vesselTypes.militaryVessels.description,
       image: "/military-vessels.jpg"
     },
     { 
-      name: "Cargo Ships", 
-      description: "Container and bulk carriers",
+      name: t.services.vesselTypes.cargoShips.name, 
+      description: t.services.vesselTypes.cargoShips.description,
       image: "/src8.jpg"
     },
     { 
-      name: "Offshore Rigs", 
-      description: "Drilling and production platforms",
+      name: t.services.vesselTypes.offshoreRigs.name, 
+      description: t.services.vesselTypes.offshoreRigs.description,
       image: "/src9.jpg"
     }
   ];
@@ -99,14 +102,13 @@ export function ServicesSection() {
         {/* Header */}
         <div className="text-center mb-8 animate-fade-in-up">
           <Badge className="mb-2 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-2 py-1 text-xs">
-            Our Expertise
+            {t.services.badge}
           </Badge>
           <h2 className="text-xl md:text-2xl font-bold text-[#003366] mb-3">
-            Comprehensive Maritime Services
+            {t.services.title}
           </h2>
           <p className="text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            From husbanding services to complete ship supply solutions, we provide 
-            end-to-end maritime support with unmatched quality and reliability.
+            {t.services.description}
           </p>
         </div>
 
@@ -152,10 +154,10 @@ export function ServicesSection() {
         <div className="mt-16">
           <div className="text-center mb-10">
             <h3 className="text-xl md:text-2xl font-bold text-[#003366] mb-3">
-              Supporting All Vessel Types
+              {t.services.vesselTypesTitle}
             </h3>
             <p className="text-base text-slate-600 max-w-2xl mx-auto">
-              Specialized expertise across all maritime sectors
+              {t.services.vesselTypesDescription}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

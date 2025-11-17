@@ -13,38 +13,41 @@ import {
   Target,
   ArrowRight
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function AboutSection() {
+  const { t } = useLanguage();
+  
   const values = [
     {
       icon: Target,
-      title: "Excellence",
-      description: "Delivering the highest quality services with attention to every detail"
+      title: t.about.features.experience.title.split(' ')[0], // "25+"
+      description: t.about.features.experience.description
     },
     {
       icon: Shield,
-      title: "Reliability",
-      description: "Consistent, dependable service you can count on 24/7"
+      title: t.about.features.reliability.title,
+      description: t.about.features.reliability.description
     },
     {
       icon: Globe,
-      title: "Global Reach",
-      description: "Extensive network across 15+ countries and 75+ ports worldwide"
+      title: t.about.features.network.title,
+      description: t.about.features.network.description
     },
     {
       icon: Clock,
-      title: "Efficiency",
-      description: "Quick turnaround times with streamlined processes"
+      title: t.about.features.support.title,
+      description: t.about.features.support.description
     }
   ];
 
   const achievements = [
-    "22+ years of maritime industry experience",
-    "Serving 15+ countries across the globe",
-    "75+ major ports worldwide",
-    "Military vessel security clearances",
-    "24/7 emergency response capability",
-    "ISO-certified quality management"
+    t.about.stats.experience,
+    t.about.achievements[0],
+    t.about.achievements[1],
+    t.about.achievements[2],
+    t.about.achievements[3],
+    t.about.achievements[4]
   ];
 
   return (
@@ -68,21 +71,18 @@ export function AboutSection() {
           <div className="space-y-4">
             <div className="animate-fade-in-up">
               <Badge className="mb-2 bg-[rgb(252,251,248)] text-[#003366] hover:bg-[rgb(242,241,238)] font-semibold px-2 py-1 text-xs">
-                About Anchor Global
+                {t.about.badge}
               </Badge>
               <h2 className="text-xl md:text-2xl font-bold text-[#003366] mb-3 leading-tight">
-                22 Years of Maritime Excellence
+                {t.about.title}
               </h2>
               <p className="text-sm text-slate-700 mb-3 leading-relaxed">
-                At Anchor Global, we have built our reputation on delivering exceptional 
+                {t.about.description} 
                 husbanding services worldwide. From the northern ports of Canada to the southern coasts of Argentina, and across major maritime hubs in Europe and the Middle East, our extensive experience in the maritime industry—combined with our commitment to quality and efficiency—makes us the trusted partner for vessel operators around the globe.
               </p>
               
               <p className="text-xs text-slate-600 mb-4">
-                We work with carefully selected teams and products, ensuring that every service 
-                we provide meets the highest standards. Our comprehensive approach covers everything 
-                from port agency services to complete ship supply solutions, all backed by our 
-                deep understanding of local regulations and international maritime standards.
+                {t.about.qualityDescription}
               </p>
             </div>
 
@@ -126,7 +126,7 @@ export function AboutSection() {
 
             <Button className="bg-[#003366] hover:bg-[#002244] text-white px-4 py-3 text-xs font-semibold shadow-lg transition-all duration-300 hover:scale-105 group">
               <span className="flex items-center">
-                Learn More About Us
+                {t.about.learnMoreButton}
                 <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
             </Button>
@@ -155,10 +155,10 @@ export function AboutSection() {
             {/* Stats Grid Only */}
             <div className="grid grid-cols-2 gap-2">
               {[
-                { value: "22+", label: "Years Experience", color: "bg-[#003366]" },
-                { value: "15+", label: "Countries", color: "bg-[rgb(252,251,248)]" },
-                { value: "75+", label: "Major Ports", color: "bg-[#003366]" },
-                { value: "24/7", label: "Support", color: "bg-[rgb(252,251,248)]" }
+                { value: "22+", label: t.hero.stats.years, color: "bg-[#003366]" },
+                { value: "15+", label: t.hero.stats.countries, color: "bg-[rgb(252,251,248)]" },
+                { value: "75+", label: t.hero.stats.majorPorts, color: "bg-[#003366]" },
+                { value: "24/7", label: t.hero.stats.support, color: "bg-[rgb(252,251,248)]" }
               ].map((stat, index) => (
                 <Card 
                   key={index} 

@@ -15,9 +15,11 @@ import {
 } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import globalConfig from "@/config/globalConfig.json";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 
 export function Footer() {
+  const { t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -25,31 +27,15 @@ export function Footer() {
   const { phone, email } = globalConfig.globalContact;
 
   const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Global Network", href: "#network" },
-    { name: "Contact", href: "#contact" }
+    { name: t.navigation.about, href: "#about" },
+    { name: t.navigation.services, href: "#services" },
+    { name: t.navigation.network, href: "#network" },
+    { name: t.navigation.contact, href: "#contact" }
   ];
 
-  const services = [
-    "Husbanding Services",
-    "Ship Chandlery", 
-    "Fuel & Lubricants",
-    "Port Logistics",
-    "Crew Services",
-    "Military Support"
-  ];
+  const services = t.footer.servicesList;
 
-  const regions = [
-    { name: "United States", code: "US" },
-    { name: "Mexico", code: "MX" },
-    { name: "Trinidad & Tobago", code: "TT" },
-    { name: "Brazil", code: "BR" },
-    { name: "Guyana", code: "GY" },
-    { name: "Portugal", code: "PT" },
-    { name: "Spain", code: "ES" },
-    { name: "Lebanon", code: "LB" }
-  ];
+  const regions = t.footer.regions;
 
   return (
     <footer className="bg-[#003366] text-white relative overflow-hidden">
@@ -77,8 +63,7 @@ export function Footer() {
               <span className="font-bold text-base">ANCHOR GLOBAL</span>
             </div>
             <p className="text-white/80 mb-4 leading-relaxed text-xs">
-              22 years of excellence in maritime services. Providing comprehensive 
-              husbanding solutions for vessels worldwide, with a presence across the Americas, Europe, and the Middle East.
+              {t.footer.description}
             </p>
             <div className="space-y-2">
               <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
@@ -91,14 +76,14 @@ export function Footer() {
               </div>
               <div className="flex items-center text-sm hover:text-[rgb(252,251,248)] transition-colors duration-200">
                 <MapPin className="w-4 h-4 mr-3" />
-                <span>Global Maritime Services</span>
+                <span>{t.footer.globalMaritimeServices}</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <h4 className="font-bold text-xl mb-8 font-display">Quick Links</h4>
+            <h4 className="font-bold text-xl mb-8 font-display">{t.footer.quickLinks}</h4>
             <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -115,7 +100,7 @@ export function Footer() {
 
           {/* Services */}
           <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <h4 className="font-bold text-xl mb-8 font-display">Our Services</h4>
+            <h4 className="font-bold text-xl mb-8 font-display">{t.footer.services}</h4>
             <ul className="space-y-4">
               {services.map((service, index) => (
                 <li key={index}>
@@ -129,7 +114,7 @@ export function Footer() {
 
           {/* Global Presence */}
           <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <h4 className="font-bold text-xl mb-8 font-display">Global Presence</h4>
+            <h4 className="font-bold text-xl mb-8 font-display">{t.footer.globalPresence}</h4>
             <div className="space-y-4">
               {regions.map((region, index) => (
                 <div key={index} className="flex items-center text-sm">
@@ -159,11 +144,11 @@ export function Footer() {
       <div className="container mx-auto px-6 lg:px-8 py-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-primary-foreground/80 text-sm">
-            © 2024 Anchor Global. All rights reserved. | 22 Years of Maritime Excellence
+            {t.footer.copyright} | {t.footer.maritimeExcellence}
           </div>
           
           <div className="flex items-center space-x-6">
-            <span className="text-primary-foreground/60 text-xs">24/7 Emergency Support</span>
+            <span className="text-primary-foreground/60 text-xs">{t.footer.emergencySupport}</span>
             <Button
               variant="ghost"
               size="sm"
@@ -171,7 +156,7 @@ export function Footer() {
               className="text-primary-foreground hover:text-accent hover:bg-primary-hover px-4 py-2"
             >
               <ChevronUp className="w-4 h-4 mr-2" />
-              Back to Top
+              {t.footer.backToTop}
             </Button>
           </div>
         </div>
