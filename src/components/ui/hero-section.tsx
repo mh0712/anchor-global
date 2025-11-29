@@ -59,8 +59,8 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
         <div className="max-w-5xl mx-auto">
           {/* Icon */}
-          <div className="flex justify-center mb-4 pt-4">
-            <div className="w-12 h-12 bg-[rgb(252,251,248)]/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-[rgb(252,251,248)]/30 shadow-2xl" style={{animation: 'float 3s ease-in-out infinite'}}>
+          <div className="flex justify-center mb-4 pt-6">
+            <div className="w-12 h-12 bg-[rgb(252,251,248)]/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-[rgb(252,251,248)]/30 shadow-2xl" style={{animation: 'floatY 3s ease-in-out infinite'}}>
               <Anchor className="w-6 h-6 text-[rgb(252,251,248)]" />
             </div>
           </div>

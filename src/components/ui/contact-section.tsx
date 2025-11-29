@@ -294,7 +294,7 @@ export function ContactSection() {
                   {/* Service and Country/Region on same row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
                     <div className="mb-0">
-                      <label htmlFor="service" className={`text-[11px] font-semibold mb-1 block ${formErrors.service ? 'text-red-600' : 'text-[#003366]'}`}>{t.contact.form.service}</label>
+                      <label htmlFor="service" className={`text-[11px] font-semibold mb-1 block ${formErrors.service ? 'text-red-600' : 'text-[#003366]'}`}>{t.contact.form.service} *</label>
                       <select 
                         name="service"
                         value={formData.service}
