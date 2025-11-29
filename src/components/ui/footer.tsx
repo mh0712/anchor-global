@@ -64,9 +64,9 @@ export function Footer() {
             </p>
             <div className="space-y-2">
               <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
-                <Phone className="w-3 h-3 mr-2" />
+                <Phone className="w-4 h-4 mr-3" />
                 <span className="font-medium">{phone}</span>
-              </div>
+              </div>  
               <div className="flex items-center text-xs hover:text-[rgb(252,251,248)] transition-colors duration-200 cursor-pointer">
                 <Mail className="w-4 h-4 mr-3" />
                 <span>{email}</span>

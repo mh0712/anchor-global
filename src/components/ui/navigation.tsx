@@ -40,10 +40,9 @@ export function Navigation({ className }: NavigationProps) {
   const smoothScroll = (targetId: string) => {
     const element = document.querySelector(targetId);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+      const yOffset = -80;
+      const y = (element as HTMLElement).getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
