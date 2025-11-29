@@ -18,6 +18,15 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export function AboutSection() {
   const { t } = useLanguage();
   
+  const smoothScroll = (targetId: string) => {
+    const element = document.querySelector(targetId);
+    if (element) {
+      const yOffset = -80;
+      const y = (element as HTMLElement).getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+  
   const values = [
     {
       icon: Target,
@@ -154,15 +163,16 @@ export function AboutSection() {
             {/* Stats Grid Only */}
             <div className="grid grid-cols-2 gap-2">
               {[
-                { value: "22+", label: t.hero.stats.years, color: "bg-[#003366]" },
-                { value: "15+", label: t.hero.stats.countries, color: "bg-[rgb(252,251,248)]" },
-                { value: "75+", label: t.hero.stats.majorPorts, color: "bg-[#003366]" },
-                { value: "24/7", label: t.hero.stats.support, color: "bg-[rgb(252,251,248)]" }
+                { value: "22+", label: t.hero.stats.years, color: "bg-[#003366]", target: "#about" },
+                { value: "15+", label: t.hero.stats.countries, color: "bg-[rgb(252,251,248)]", target: "#network" },
+                { value: "75+", label: t.hero.stats.majorPorts, color: "bg-[#003366]", target: "#network" },
+                { value: "24/7", label: t.hero.stats.support, color: "bg-[rgb(252,251,248)]", target: "#contact" }
               ].map((stat, index) => (
                 <Card 
                   key={index} 
-                  className={`text-center p-6 ${stat.color} border-0 hover:scale-105 transition-transform duration-300`}
+                  className={`text-center p-6 ${stat.color} border-0 hover:scale-105 transition-transform duration-300 cursor-pointer`}
                   style={{animation: `scaleIn 0.5s ease-out ${index * 0.1}s forwards`, opacity: 0}}
+                  onClick={() => smoothScroll(stat.target)}
                 >
                   <CardContent className="p-0">
                     <div className={`text-4xl font-bold mb-2 ${stat.color === 'bg-[#003366]' ? 'text-white' : 'text-[#003366]'}`}>
