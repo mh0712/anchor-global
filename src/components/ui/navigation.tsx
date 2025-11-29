@@ -13,6 +13,7 @@ import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Language } from "@/lib/translations";
+import ReactCountryFlag from "react-country-flag"; // ✅ added for SVG flags
 
 interface NavigationProps {
   className?: string;
@@ -23,9 +24,9 @@ export function Navigation({ className }: NavigationProps) {
   const { language, setLanguage, t } = useLanguage();
 
   const countries = [
-    { code: "en" as Language, name: "United States", flag: "🇺🇸", locale: "usa" },
-    { code: "es" as Language, name: "México", flag: "🇲🇽", locale: "mx" },
-    { code: "pt" as Language, name: "Brasil", flag: "🇧🇷", locale: "br" },
+    { code: "en" as Language, name: "United States", flag: "🇺🇸", locale: "usa", iso: "US" },
+    { code: "es" as Language, name: "México", flag: "🇲🇽", locale: "mx", iso: "MX" },
+    { code: "pt" as Language, name: "Brasil", flag: "🇧🇷", locale: "br", iso: "BR" },
   ];
 
   const navItems = [
@@ -85,20 +86,57 @@ export function Navigation({ className }: NavigationProps) {
             {/* Country Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300 text-xs">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-[rgb(252,251,248)]/20 hover:text-[rgb(252,251,248)] transition-all duration-300 text-xs"
+                >
                   <Globe className="w-3 h-3 mr-1" />
-                  {currentCountryData?.flag}
+
+                  {/* ✅ SVG flag in trigger */}
+                  {currentCountryData?.iso && (
+                    <ReactCountryFlag
+                      countryCode={currentCountryData.iso}
+                      svg
+                      style={{ width: "1.2em", height: "0.9em" }}
+                      className="mr-1"
+                    />
+                  )}
+
                   <ChevronDown className="w-4 h-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-40">
+
+              {/* ✅ BLUE background dropdown */}
+              <DropdownMenuContent
+                align="end"
+                className="
+                  w-40 
+                  bg-[#003366] text-white 
+                  border border-white/15 
+                  shadow-xl 
+                  rounded-md
+                  backdrop-blur-md
+                "
+              >
                 {countries.map((country) => (
                   <DropdownMenuItem
                     key={country.code}
                     onClick={() => handleLanguageChange(country.code)}
-                    className="cursor-pointer text-white hover:bg-[rgb(1,61,110)] hover:text-[rgb(252,251,248)] transition-colors duration-200"
+                    className="
+                      cursor-pointer 
+                      text-white 
+                      hover:bg-white/10 focus:bg-white/10 
+                      hover:text-white focus:text-white
+                      transition-colors duration-200
+                    "
                   >
-                    <span className="mr-2">{country.flag}</span>
+                    {/* ✅ SVG flag next to country */}
+                    <ReactCountryFlag
+                      countryCode={country.iso}
+                      svg
+                      style={{ width: "1.2em", height: "0.9em", marginRight: "0.5rem" }}
+                    />
                     {t.countries[country.locale as keyof typeof t.countries]}
                   </DropdownMenuItem>
                 ))}
